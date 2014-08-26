@@ -160,6 +160,9 @@ void auto_node_gen() {
   Link link = new Link();
   link.init((int)random(ns.size()-2), ns.size()-1);
   ls.add(link);
+  link = new Link();
+  link.init((int)random(ns.size()-2), (int)random(ns.size()-2));
+  ls.add(link);
 }
 
 boolean connected(Node n1, Node n2) {
