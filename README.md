@@ -9,4 +9,4 @@ http://bluedog.herokuapp.com/
 
 SCREENSHOT
 ======
-[image]: http://bluedog.herokuapp.com/acd.png
+![alt tag](http://bluedog.herokuapp.com/acd.png)
