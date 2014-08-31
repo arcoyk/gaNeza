@@ -60,3 +60,6 @@ void draw(){
 	ganeza.show();
 }
 ```
+
+Step3. Result
+![alt tag](http://bluedog.herokuapp.com/sample.png)
