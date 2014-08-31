@@ -1,6 +1,6 @@
 //Force-directed graph drawing
 //This software is released under the MIT License. Copyright(c) 2014 Yui Arco Kita
-//DEV
+//JSON
 Ganeza network;
 void setup() {
   size(1000, 1000);
