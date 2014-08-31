@@ -4,7 +4,7 @@
 Ganeza network;
 void setup() {
   size(1000, 1000);
-  network = new Ganeza("/users/kitayui/desktop/sample.json");
+  network = new Ganeza("sample.json");
   network.visualizer.method = "FORCE_DIRECTED";
 }
 
