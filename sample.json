@@ -1,45 +1,34 @@
 {
-	"nodes": [
-		{
-			"node_name": "lemon",
-			"link_to": ["chiken", "salt", "soy sauce", "rice noodle", "curry paste", "beef"],
-			"attributes": ["green curry", "pattai", "beef stake", "asian", "french", "noodle"]
-		},
+    "nodes": [
+        {
+            "node_name": "A",
+            "link_to": ["B", "C"],
+            "attributes": ["attr1", "attr2"]
+        },
 
-		{
-			"node_name": "soy sauce",
-			"link_to": ["chiken", "salt", "lemon", "rice noodle", "egg", "rice"],
-			"attributes": ["pattai", "asian"]
-		},
+        {
+            "node_name": "B",
+            "link_to": ["A", "C"],
+            "attributes": ["attr1"]
+        },
 
-		{
-			"node_name": "egg",
-			"link_to": ["chiken", "salt", "curry paste", "rice noodle", "rice"],
-			"attributes": ["green currey", "pattai", "asian", "fench"]
-		},
+        {
+            "node_name": "C",
+            "link_to": ["A", "B"],
+            "attributes": ["attr2"]
+        },
 
-		{
-			"node_name": "rice noodle",
-			"link_to": ["lemon", "soy sauce", "salt", "chiken"],
-			"attributes": ["green currey", "pattai", "asian"]
-		},
-	    
-	    {
-			"node_name": "salt",
-			"link_to": ["lemon", "soy sauce", "chiken", "egg", "rice noodle"],
-			"attributes": ["beef stake", "green currey", "pattai", "asian"]
-		},
+        {
+            "node_name": "D",
+            "link_to": ["A"],
+            "attributes": ["attr2"]
+        },
 
-	    {
-			"node_name": "chiken",
-			"link_to": ["lemon", "soy sauce", "egg", "rice noodle"],
-			"attributes": ["green currey", "pattai", "asian"]
-		},
+        {
+            "node_name": "E",
+            "link_to": [],
+            "attributes": ["attr2"]
+        },
 
-	    {
-			"node_name": "beef",
-			"link_to": ["lemon", "salt"],
-			"attributes": ["beef stake"]
-		}
     ]
 }
