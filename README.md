@@ -14,21 +14,34 @@ Step1. Prepare a JSON file.
 	"nodes": [
 		{
 			"node_name": "A",
-			"link_to": ["B", C"],
+			"link_to": ["B", "C"],
 			"attributes": ["attr1", "attr2"]
 		},
 
 		{
 			"node_name": "B",
-			"link_to": ["C"],
+			"link_to": ["A", "C"],
 			"attributes": ["attr1"]
 		},
 
 		{
 			"node_name": "C",
+			"link_to": ["A", "B"],
+			"attributes": ["attr2"]
+		},
+
+		{
+			"node_name": "D",
+			"link_to": ["A"],
+			"attributes": ["attr2"]
+		},
+
+		{
+			"node_name": "E",
 			"link_to": [],
 			"attributes": ["attr2"]
-		}
+		},
+
 	]
 }
 ```

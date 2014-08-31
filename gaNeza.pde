@@ -1,11 +1,10 @@
-//Force-directed graph drawing
-//This software is released under the MIT License. Copyright(c) 2014 Yui Arco Kita
-//JSON
+//This software is released under the MIT License.
+//Copyright(c) 2014 Yui Arco Kita
+
 Ganeza network;
 void setup() {
   size(1000, 1000);
-  network = new Ganeza("sample.json");
-  network.init();
+  network = new Ganeza("/users/kitayui/desktop/sample.json");
   network.visualizer.method = "FORCE_DIRECTED";
 }
 

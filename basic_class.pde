@@ -34,6 +34,9 @@ class Ganeza{
     }
   }
   
+  void init(){
+  }
+  
   int name_to_id(String name){
     for(Node node : nodes){
       if(node.name.equals(name)){
@@ -43,21 +46,25 @@ class Ganeza{
     return -1;
   }
   
-  void init() {
-    // nodes
-    // links
-  }
-  
   void show() {
     visualizer.run();
     translate(view.view_point.x, view.view_point.y);
+    
     for (Link link : links) {
       PVector from_posi = nodes.get(link.from_id).p;
       PVector to_posi = nodes.get(link.to_id).p;
+      stroke(200);
       line(from_posi.x, from_posi.y, to_posi.x, to_posi.y);
+      stroke(0);
     }
+    
     for (Node node : nodes) {
+      stroke(200);
       ellipse(node.p.x, node.p.y, 10, 10);
+      stroke(0);
+      fill(0);
+      text(node.name, node.p.x, node.p.y-5);
+      fill(255);
     }
   }
   
