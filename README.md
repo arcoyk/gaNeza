@@ -8,7 +8,7 @@ HOWTO
 ======
 Step1. Prepare a JSON file.
 
-//sample.json
+/* sample.json */
 {
 	"nodes": [
 		{
@@ -31,9 +31,17 @@ Step1. Prepare a JSON file.
 	]
 }
 
-Step2. Initialize gaNeza instance
+Step2. Initialize gaNeza instance and call visualizer.
 
-//gaNeza.pde
+/* gaNeza.pde (note that gaNeza.pde and sample.json are in the same directory) */
+
 Ganeza ganeza = new Ganeza("sample.json");
-//note that gaNeza.pde and sample.json are in the same directory
- 
+void setup(){
+	size(800, 800);
+	ganeza.visualizer.method = "FORCE_DIRECTED";
+}
+
+void draw(){
+	background(255);
+	ganeza.show();
+}
