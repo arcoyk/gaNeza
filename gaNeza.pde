@@ -3,8 +3,8 @@
 
 Ganeza network;
 void setup() {
-  size(1000, 1000);
-  network = new Ganeza("sample.json");
+  size(800, 700);
+  network = new Ganeza("recipe.json");
   network.visualizer.method = "FORCE_DIRECTED";
 }
 

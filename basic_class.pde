@@ -82,14 +82,29 @@ class Ganeza{
 
   void keyPressed() {
     if (key == 'a') {
-      //auto_node_gen();
+      auto_node_gen();
+    }else if(key == 'b'){
+      auto_node_rand_posi();
     }else if(key == 'c'){
       visualizer.C = 5000;
     }else if(key == 'v'){
       visualizer.C = 8000;
     }
   }
-
+  
+  void auto_node_gen(){
+    Node node = new Node(nodes.size(), new PVector(random(width),random(height)), new PVector(0, 0));
+    nodes.add(node);
+    Link link = new Link((int)random(nodes.size()-1), (int)random(nodes.size()-1));
+    links.add(link);
+  }
+  
+  void auto_node_rand_posi(){
+    for(Node node : nodes){
+      node.p.x = random(width);
+      node.p.y = random(height);
+    }
+  }
 }
 
 class Node {
@@ -102,6 +117,8 @@ class Node {
     id = id_in;
     p = p_in;
     v = v_in;
+    name = "NA";
+    attributes = new ArrayList<String>();
   }
   void init() {
   }
