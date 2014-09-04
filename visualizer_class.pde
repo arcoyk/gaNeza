@@ -4,7 +4,7 @@ class Visualizer{
   int L = 50;
   int M = 10;
   int f_limit = 10;
-  int size_limit = 150;
+  int size_limit = 1500;
   ArrayList<Node> ns;
   ArrayList<Link> ls;
   String method = "";

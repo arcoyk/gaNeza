@@ -4,7 +4,7 @@
 Ganeza network;
 void setup() {
   size(1000, 1000);
-  network = new Ganeza("sample.json");
+  network = new Ganeza("recipe_ethnic_american.json");
   network.visualizer.method = "FORCE_DIRECTED";
 }
 

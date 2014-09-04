@@ -53,16 +53,16 @@ class Ganeza{
     for (Link link : links) {
       PVector from_posi = nodes.get(link.from_id).p;
       PVector to_posi = nodes.get(link.to_id).p;
-      stroke(200);
+      stroke(link.c);
       line(from_posi.x, from_posi.y, to_posi.x, to_posi.y);
       stroke(0);
     }
     
     for (Node node : nodes) {
-      stroke(200);
+      stroke(node.c);
       ellipse(node.p.x, node.p.y, 10, 10);
-      stroke(0);
-      fill(0);
+      stroke(node.c);
+      fill(node.c);
       text(node.name, node.p.x, node.p.y-5);
       fill(255);
     }
@@ -86,7 +86,7 @@ class Ganeza{
     }else if(key == 'c'){
       visualizer.C = 5000;
     }else if(key == 'v'){
-      visualizer.C = 8000;
+      visualizer.C = 150000;
     }
   }
 
@@ -98,6 +98,7 @@ class Node {
   PVector p;
   PVector v;
   int id;
+  color c = color(0);
   Node(int id_in, PVector p_in, PVector v_in) {
     id = id_in;
     p = p_in;
@@ -110,6 +111,7 @@ class Node {
 class Link {
   int from_id;
   int to_id;
+  color c = color(200);
   Link(int from_id_in, int to_id_in) {
     from_id = from_id_in;
     to_id = to_id_in;
