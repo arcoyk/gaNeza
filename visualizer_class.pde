@@ -73,5 +73,4 @@ class Visualizer{
     }
     return false;
   }
-
 }

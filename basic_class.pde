@@ -4,6 +4,7 @@ class Ganeza{
   ArrayList<Link> links = new ArrayList<Link>();
   View view = new View();
   Visualizer visualizer = new Visualizer(nodes, links);
+  Analyzer analyzer = new Analyzer(nodes, links);
   
   Ganeza(String json_network_data) {
     JSONObject json = loadJSONObject(json_network_data);
@@ -53,17 +54,26 @@ class Ganeza{
     for (Link link : links) {
       PVector from_posi = nodes.get(link.from_id).p;
       PVector to_posi = nodes.get(link.to_id).p;
-      stroke(link.c);
+      stroke(200);
       line(from_posi.x, from_posi.y, to_posi.x, to_posi.y);
       stroke(0);
     }
     
     for (Node node : nodes) {
-      stroke(node.c);
+      if(node.findAttribute("stable")){
+        stroke(255, 220, 0);
+        fill(255, 220, 0);
+      }else if(node.findAttribute("selecting")){
+        stroke(0, 200, 255);
+        fill(0, 200, 255);
+      }else {
+        stroke(0);
+        fill(0);
+      }
       ellipse(node.p.x, node.p.y, 10, 10);
-      stroke(node.c);
-      fill(node.c);
+      textSize(20);
       text(node.name, node.p.x, node.p.y-5);
+      stroke(255);
       fill(255);
     }
   }
@@ -89,7 +99,23 @@ class Ganeza{
       visualizer.C = 150000;
     }
   }
-
+  
+  Node getRandomNode(){
+    return nodes.get((int)random(nodes.size()-1));
+  }
+  
+  void addAttribute(ArrayList<Node> nodes, String attribute){
+    for(Node node : nodes){
+      node.attributes.add(attribute);
+    }
+  }
+  
+  void flushAttribute(String attribute){
+    for(Node node : nodes){
+      node.delete_attribute(attribute);
+    }
+  }
+  
 }
 
 class Node {
@@ -98,7 +124,6 @@ class Node {
   PVector p;
   PVector v;
   int id;
-  color c = color(0);
   Node(int id_in, PVector p_in, PVector v_in) {
     id = id_in;
     p = p_in;
@@ -106,12 +131,30 @@ class Node {
   }
   void init() {
   }
+  
+  void delete_attribute(String attr){
+    ArrayList<String> new_attributes = new ArrayList<String>();
+    for(String str : attributes){
+      if(!str.equals(attr)){
+        new_attributes.add(str);
+      }
+    }
+    attributes = new_attributes;
+  }
+  
+  boolean findAttribute(String attr){
+    for(String str : attributes){
+      if(attr.equals(str)){
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 class Link {
   int from_id;
   int to_id;
-  color c = color(200);
   Link(int from_id_in, int to_id_in) {
     from_id = from_id_in;
     to_id = to_id_in;

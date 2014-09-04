@@ -8,7 +8,25 @@ void setup() {
   network.visualizer.method = "FORCE_DIRECTED";
 }
 
+ArrayList<Node> nodes;
+float max_point = 0;
 void draw() {
+  //analysis
+  nodes = new ArrayList<Node>();
+  for(int i=0; i<(int)random(5, network.nodes.size()); i++){
+    nodes.add(network.getRandomNode());
+  }
+  network.flushAttribute("selecting");
+  network.addAttribute(nodes, "selecting");
+  int link_count = network.analyzer.link_count(nodes);
+  float link_distribution = network.analyzer.link_distribution(nodes);
+  float link_count_per_node = link_count/nodes.size();
+  float point = link_distribution/link_count_per_node;
+  if(point > max_point){
+    max_point = point;
+    network.flushAttribute("stable");
+    network.addAttribute(nodes, "stable");
+  }
   background(255);
   network.show();
 }
