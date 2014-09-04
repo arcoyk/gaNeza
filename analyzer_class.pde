@@ -1,11 +1,11 @@
 class Analyzer{
   ArrayList<Node> nodes;
   ArrayList<Link> links;
-  
   Analyzer(ArrayList<Node> nodes_in , ArrayList<Link> links_in){
     nodes = nodes_in;
     links = links_in;
   }
+  
   void init(){
   }
   
