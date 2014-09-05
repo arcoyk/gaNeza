@@ -56,7 +56,7 @@ class Ganeza{
       stroke(200);
       if(nodes.get(link.from_id).findAttribute("stable") &&
          nodes.get(link.to_id).findAttribute("stable")){
-        stroke(255, 200, 0);
+        stroke(255, 20, 20);
       }else  if(nodes.get(link.from_id).findAttribute("selecting") &&
                 nodes.get(link.to_id).findAttribute("selecting")){
         stroke(0, 200, 255);
@@ -69,8 +69,8 @@ class Ganeza{
     
     for (Node node : nodes) {
       if(node.findAttribute("stable")){
-        stroke(255, 220, 0);
-        fill(255, 220, 0);
+        stroke(255, 20, 20);
+        fill(255, 20, 20);
       }else if(node.findAttribute("selecting")){
         stroke(0, 200, 255);
         fill(0, 200, 255);

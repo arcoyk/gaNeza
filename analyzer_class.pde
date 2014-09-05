@@ -52,4 +52,21 @@ class Analyzer{
     }
     return false;
   }
+  
+  boolean isNetwork(ArrayList<Node> nodes){
+    for(Node node1 : nodes){
+      boolean connected_someone = false;
+      for(Node node2 : nodes){
+        if(connected(node1, node2)){
+          connected_someone = true;
+          break;
+        }
+      }
+      if(!connected_someone){
+        return false;
+      }
+    }
+    return true;
+  }
+        
 }
