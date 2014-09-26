@@ -10,6 +10,11 @@ class Visualizer{
   ArrayList<Link> links;
   String method = "FORCE_DIRECTED";
   String limit = "normal";
+  color wine_red = color(255, 50, 15);
+  color deep_blue = color(20, 20, 200);
+  color white = color(255, 255, 255);
+  color gray = color(200, 200, 200);
+  color black = color(0, 0, 0);
   
   Visualizer(ArrayList<Node> in_nodes, ArrayList<Link> in_links) {
     nodes = in_nodes;
@@ -30,18 +35,18 @@ class Visualizer{
          !nodes.get(link.to_id).findAttribute(limit)) {
            continue;
       }
-      stroke(200);
+      stroke_color(gray);
       if(nodes.get(link.from_id).findAttribute("stable") &&
          nodes.get(link.to_id).findAttribute("stable")){
-        stroke(255, 20, 20);
+        stroke_color(wine_red);
       }else  if(nodes.get(link.from_id).findAttribute("selecting") &&
                 nodes.get(link.to_id).findAttribute("selecting")){
-        stroke(0, 200, 255);
+        stroke_color(deep_blue);
       }else{
-        stroke(200);
+        stroke_color(gray);
       }
       line(from_posi.x, from_posi.y, to_posi.x, to_posi.y);
-      stroke(0);
+      stroke_color(black);
     }
     
     for (Node node : nodes) {
@@ -49,20 +54,20 @@ class Visualizer{
         continue;
       }
       if(node.findAttribute("stable")){
-        stroke(255, 20, 20);
-        fill(255, 20, 20);
+        stroke_color(wine_red);
+        fill_color(wine_red);
       }else if(node.findAttribute("selecting")){
-        stroke(0, 200, 255);
-        fill(0, 200, 255);
+        stroke_color(deep_blue);
+        fill_color(deep_blue);
       }else {
-        stroke(0);
-        fill(0);
+        stroke_color(black);
+        fill_color(black);
       }
       ellipse(node.p.x, node.p.y, 10, 10);
       textSize(20);
       text(node.name, node.p.x, node.p.y-5);
-      stroke(255);
-      fill(255);
+      stroke_color(white);
+      fill_color(white);
     }
     
   }
@@ -135,5 +140,13 @@ class Visualizer{
       }
     }
     return false;
+  }
+   
+  void stroke_color(color c){
+    stroke(red(c), green(c), blue(c));
+  }
+  
+  void fill_color(color c){
+    fill(red(c), green(c), blue(c));
   }
 }
