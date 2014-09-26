@@ -97,16 +97,6 @@ class Ganeza{
     view.view_point.x = view.view_point_anchor.x + (mouseX - view.mouse_anchor.x);
     view.view_point.y = view.view_point_anchor.y + (mouseY - view.mouse_anchor.y);
   }
-
-  void keyPressed() {
-    if (key == 'a') {
-      //auto_node_gen();
-    }else if(key == 'c'){
-      visualizer.C = 5000;
-    }else if(key == 'v'){
-      visualizer.C = 150000;
-    }
-  }
   
   Node getRandomNode(){
     return nodes.get((int)random(nodes.size()-1));

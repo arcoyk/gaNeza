@@ -42,5 +42,9 @@ void mouseDragged(){
 }
 
 void keyPressed(){
-  network.keyPressed();
+  if (key == 'a') {
+  }else if(key == 'c'){
+    network.visualizer.method = "CIRCLE";
+  }else if(key == 'v'){
+  }
 }

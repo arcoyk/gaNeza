@@ -1,9 +1,10 @@
 class Visualizer{
-  int C = 5000;
+  int C = 130000;
   int J = 1;
   int L = 50;
   int M = 10;
   int f_limit = 10;
+  int circle_rad = 200;
   int size_limit = 1500;
   ArrayList<Node> ns;
   ArrayList<Link> ls;
@@ -17,8 +18,21 @@ class Visualizer{
   void run(){
     if (method == "FORCE_DIRECTED") {
       run_force_directed();
+    }else if (method == "CIRCLE") {
+      run_circle();
     }
   }
+  
+  void run_circle(){
+    float interval = 2*PI/ns.size();
+    PVector center = new PVector(width/2, height/2);
+    for (int i=0; i<ns.size(); i++) {
+      Node n1 = ns.get(i);
+      n1.p.x = center.x + circle_rad * cos(interval * i);
+      n1.p.y = center.y + circle_rad * sin(interval * i);
+    }
+  }
+      
   
   void run_force_directed() {
     for (int i=0; i<ns.size(); i++) {
