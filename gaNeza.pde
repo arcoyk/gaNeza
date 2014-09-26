@@ -11,6 +11,8 @@ void setup() {
 ArrayList<Node> nodes;
 float max_point = 0;
 boolean stop = false;
+
+float stable_dist, stable_links, stable_point;
 void draw() {
   if(stop) return;
   //analysis
@@ -47,6 +49,9 @@ void draw() {
   float link_count_per_node = link_count/cand_nodes.size();
   float point = link_distribution/link_count_per_node;
   if(point > max_point){
+    stable_dist = link_distribution;
+    stable_links = link_count_per_node;
+    stable_point = point;
     max_point = point;
     network.flushAttribute("stable");
     network.addAttribute(cand_nodes, "stable");
@@ -54,6 +59,10 @@ void draw() {
 
   background(255);
   network.show();
+  fill(0);
+  text("deviation : "+stable_dist+"\n"+
+       "links per node : "+stable_links+"\n"+
+       "point : "+stable_point, 200, 200);
 }
 
 void mousePressed(){
@@ -75,5 +84,7 @@ void keyPressed(){
     network.visualizer.limit = "stable";
   }else if(key == 'n'){
     network.visualizer.limit = "normal";
+  }else if(key == 'S'){
+    save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }
 }
