@@ -20,15 +20,27 @@
 
         {
             "node_name": "D",
-            "link_to": ["A"],
+            "link_to": ["B", "E"],
             "attributes": ["attr2"]
         },
 
         {
             "node_name": "E",
-            "link_to": [],
+            "link_to": ["B", "D"],
             "attributes": ["attr2"]
         },
+
+        {
+            "node_name": "F",
+            "link_to": ["G"],
+            "attributes": ["attr2"]
+        },
+        
+        {
+            "node_name": "G",
+            "link_to": ["F"],
+            "attributes": ["attr2"]
+        }
 
     ]
 }
