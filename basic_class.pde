@@ -33,6 +33,8 @@ class Ganeza{
         links.add(link);
       }
     }
+    
+    addAttribute(nodes, "normal");
   }
   
   void init(){
@@ -48,42 +50,8 @@ class Ganeza{
   }
   
   void show() {
-    visualizer.run();
     translate(view.view_point.x, view.view_point.y);
-    for (Link link : links) {
-      PVector from_posi = nodes.get(link.from_id).p;
-      PVector to_posi = nodes.get(link.to_id).p;
-      stroke(200);
-      if(nodes.get(link.from_id).findAttribute("stable") &&
-         nodes.get(link.to_id).findAttribute("stable")){
-        stroke(255, 20, 20);
-      }else  if(nodes.get(link.from_id).findAttribute("selecting") &&
-                nodes.get(link.to_id).findAttribute("selecting")){
-        stroke(0, 200, 255);
-      }else{
-        stroke(200);
-      }
-      line(from_posi.x, from_posi.y, to_posi.x, to_posi.y);
-      stroke(0);
-    }
-    
-    for (Node node : nodes) {
-      if(node.findAttribute("stable")){
-        stroke(255, 20, 20);
-        fill(255, 20, 20);
-      }else if(node.findAttribute("selecting")){
-        stroke(0, 200, 255);
-        fill(0, 200, 255);
-      }else {
-        stroke(0);
-        fill(0);
-      }
-      ellipse(node.p.x, node.p.y, 10, 10);
-      textSize(20);
-      text(node.name, node.p.x, node.p.y-5);
-      stroke(255);
-      fill(255);
-    }
+    visualizer.run();
   }
   
   void mousePressed() {
@@ -148,6 +116,7 @@ class Node {
     }
     return false;
   }
+  
 }
 
 class Link {
