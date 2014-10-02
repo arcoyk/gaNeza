@@ -10,7 +10,7 @@ class Visualizer{
   ArrayList<Link> links;
   String method = "FORCE_DIRECTED";
   String limit = "normal";
-  color wine_red = color(10, 150, 60);
+  color wine_red = color(255, 100, 50);
   color deep_blue = color(20, 20, 255);
   color white = color(255, 255, 255);
   color gray = color(200, 200, 200);
@@ -147,6 +147,7 @@ class Visualizer{
   }
   
   void fill_color(color c){
+    alpha(c);
     fill(red(c), green(c), blue(c));
   }
 }

@@ -20,27 +20,34 @@
 
         {
             "node_name": "D",
-            "link_to": ["B", "E"],
+            "link_to": ["B", "E", "F"],
             "attributes": ["attr2"]
         },
 
         {
             "node_name": "E",
-            "link_to": ["B", "D"],
+            "link_to": ["B", "F", "D"],
             "attributes": ["attr2"]
         },
 
         {
             "node_name": "F",
-            "link_to": ["G"],
+            "link_to": ["B", "E", "D"],
             "attributes": ["attr2"]
         },
         
         {
             "node_name": "G",
-            "link_to": ["F"],
+            "link_to": ["H"],
+            "attributes": ["attr2"]
+        },
+
+        {
+            "node_name": "H",
+            "link_to": ["G"],
             "attributes": ["attr2"]
         }
+
 
     ]
 }
