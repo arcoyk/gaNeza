@@ -3,8 +3,8 @@
 
 Ganeza network;
 void setup() {
-  size(800, 700);
-  network = new Ganeza("recipe.json");
+  size(1100, 700);
+  network = new Ganeza("recipe_ethnic_american.json");
   network.visualizer.method = "FORCE_DIRECTED";
 }
 
@@ -22,6 +22,15 @@ void mouseDragged(){
 }
 
 void keyPressed(){
-  network.keyPressed();
+  if(key == 'c'){
+    network.visualizer.method = "CIRCLE";
+  }else if(key == 'f'){
+    network.visualizer.method = "FORCE_DIRECTED";
+  }else if(key == 's'){
+    network.visualizer.attribute_limit = "Korean Sushi";
+  }else if(key == 'n'){
+    network.visualizer.attribute_limit = "normal";
+  }else if(key == 'S'){
+    save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
+  }
 }
-

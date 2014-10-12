@@ -4,9 +4,13 @@ class Ganeza{
   ArrayList<Link> links = new ArrayList<Link>();
   View view = new View();
   Visualizer visualizer = new Visualizer(nodes, links);
+  Analyzer analyzer = new Analyzer(nodes, links);
+  Ganeza(String network_json) {
+    init(network_json);
+  }
   
-  Ganeza(String json_network_data) {
-    JSONObject json = loadJSONObject(json_network_data);
+  void init(String network_json){
+    JSONObject json = loadJSONObject(network_json);
     JSONArray node_data_array = json.getJSONArray("nodes");
     //nodes
     for(int i=0; i<node_data_array.size(); i++){
@@ -14,14 +18,12 @@ class Ganeza{
       Node node = new Node(i, new PVector(random(width), random(height)), new PVector(0, 0));
       node.name = node_data.getString("node_name");
       String[] attrs = node_data.getJSONArray("attributes").getStringArray();
-      node.attributes = new ArrayList<String>();
       for(int m=0; m<attrs.length; m++){
         node.attributes.add(attrs[m]);
       }
       nodes.add(node);
     }
-    
-    //link
+    //links
     for(int from_id=0; from_id<node_data_array.size(); from_id++){
       JSONObject node_data = node_data_array.getJSONObject(from_id);
       String[] to_names = node_data.getJSONArray("link_to").getStringArray();
@@ -31,10 +33,7 @@ class Ganeza{
         Link link = new Link(from_id, to_id);
         links.add(link);
       }
-    }
-  }
-  
-  void init(){
+    }    
   }
   
   int name_to_id(String name){
@@ -45,27 +44,26 @@ class Ganeza{
     }
     return -1;
   }
+   
+  Node getRandomNode(){
+    return nodes.get((int)random(nodes.size()-1));
+  }
+  
+  void addAttribute(ArrayList<Node> nodes, String attribute){
+    for(Node node : nodes){
+      node.attributes.add(attribute);
+    }
+  }
+  
+  void flushAttribute(String attribute){
+    for(Node node : nodes){
+      node.delete_attribute(attribute);
+    }
+  }
   
   void show() {
-    visualizer.run();
     translate(view.view_point.x, view.view_point.y);
-    
-    for (Link link : links) {
-      PVector from_posi = nodes.get(link.from_id).p;
-      PVector to_posi = nodes.get(link.to_id).p;
-      stroke(200);
-      line(from_posi.x, from_posi.y, to_posi.x, to_posi.y);
-      stroke(0);
-    }
-    
-    for (Node node : nodes) {
-      stroke(200);
-      ellipse(node.p.x, node.p.y, 10, 10);
-      stroke(0);
-      fill(0);
-      text(node.name, node.p.x, node.p.y-5);
-      fill(255);
-    }
+    visualizer.run();
   }
   
   void mousePressed() {
@@ -74,42 +72,16 @@ class Ganeza{
     view.mouse_anchor.x = mouseX;
     view.mouse_anchor.y = mouseY;
   }
-
+  
   void mouseDragged(){
     view.view_point.x = view.view_point_anchor.x + (mouseX - view.mouse_anchor.x);
     view.view_point.y = view.view_point_anchor.y + (mouseY - view.mouse_anchor.y);
-  }
-
-  void keyPressed() {
-    if (key == 'a') {
-      auto_node_gen();
-    }else if(key == 'b'){
-      auto_node_rand_posi();
-    }else if(key == 'c'){
-      visualizer.C = 5000;
-    }else if(key == 'v'){
-      visualizer.C = 8000;
-    }
-  }
-  
-  void auto_node_gen(){
-    Node node = new Node(nodes.size(), new PVector(random(width),random(height)), new PVector(0, 0));
-    nodes.add(node);
-    Link link = new Link((int)random(nodes.size()-1), (int)random(nodes.size()-1));
-    links.add(link);
-  }
-  
-  void auto_node_rand_posi(){
-    for(Node node : nodes){
-      node.p.x = random(width);
-      node.p.y = random(height);
-    }
   }
 }
 
 class Node {
   String name;
-  ArrayList<String> attributes;
+  ArrayList<String> attributes = new ArrayList<String>();
   PVector p;
   PVector v;
   int id;
@@ -117,20 +89,43 @@ class Node {
     id = id_in;
     p = p_in;
     v = v_in;
-    name = "NA";
-    attributes = new ArrayList<String>();
+    init();
   }
+  
   void init() {
+    attributes.add("normal");
+  }
+  
+  void delete_attribute(String attr){
+    ArrayList<String> new_attributes = new ArrayList<String>();
+    for(String str : attributes){
+      if(!str.equals(attr)){
+        new_attributes.add(str);
+      }
+    }
+    attributes = new_attributes;
+  }
+  
+  boolean findAttribute(String attr){
+    for(String str : attributes){
+      if(attr.equals(str)){
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 class Link {
   int from_id;
   int to_id;
+  int weight;
   Link(int from_id_in, int to_id_in) {
     from_id = from_id_in;
     to_id = to_id_in;
+    init();
   }
+  
   void init() {
   }
 }
@@ -142,6 +137,7 @@ class View {
   PVector view_point_anchor = new PVector();
   View() {
   }
+  
   void init() {
   }
 }

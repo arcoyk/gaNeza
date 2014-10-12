@@ -1,0 +1,212 @@
+[
+
+{
+    "recipe_name" : "Spicy Chicken Thai Soup",
+    "ingredients" : [ 
+        "lemongrass stalks, bottom two-thirds of tender inner bulbs only, thinly sliced", 
+        "garlic, chopped", 
+        "fresh ginger root, chopped", 
+        "chicken broth", 
+        "vegetable oil", 
+        "skinless, boneless chicken thighs, cut into chunks", 
+        "fresh white mushrooms, quartered", 
+        "red curry paste", 
+        "fish sauce", 
+        "lime, juiced", 
+        "coconut milk", 
+        "red onion, sliced", 
+        "cilantro, roughly chopped", 
+        "lime, cut into wedges, for serving", 
+        "fresh jalapeno pepper, sliced into rings"
+    ]
+},
+
+{
+    "recipe_name" : "Sukhothai Pad Thai",
+    "ingredients" : [ 
+        "white sugar", 
+        "distilled white vinegar", 
+        "soy sauce", 
+        "tamarind pulp", 
+        "dried rice noodles", 
+        "vegetable oil", 
+        "minced garlic", 
+        "eggs", 
+        "firm tofu, cut into 1/2 inch strips", 
+        "white sugar", 
+        "salt", 
+        "ground peanuts", 
+        "ground, dried oriental radish", 
+        "chopped fresh chives", 
+        "paprika", 
+        "fresh bean sprouts", 
+        "lime, cut into wedges"
+    ]
+}, 
+
+{
+    "recipe_name" : "Thai Noodles",
+    "ingredients" : [
+        "dried rice noodles", 
+        "skinless, boneless chicken breast halves", 
+        "soy sauce", 
+        "green bell pepper, sliced", 
+        "red bell pepper, sliced", 
+        "cucumber, coarsely chopped", 
+        "carrot, grated", 
+        "mushrooms, halved", 
+        "onion, chopped", 
+        "garlic, minced", 
+        "minced fresh ginger root", 
+        "red chile sauce", 
+        "peanut sauce", 
+        "oyster sauce", 
+        "sesame oil", 
+        "sesame seeds"
+    ]
+},
+
+{
+    "recipe_name" : "Gourmet Mushroom Risotto",
+    "ingredients" : [
+        "chicken broth, divided", 
+        "olive oil, divided", 
+        "portobello mushrooms, thinly sliced", 
+        "white mushrooms, thinly sliced", 
+        "shallots, diced", 
+        "Arborio rice", 
+        "dry white wine", 
+        "sea salt to taste", 
+        "freshly ground black pepper to taste", 
+        "finely chopped chives", 
+        "butter", 
+        "freshly grated Parmesan cheese"
+    ]
+},
+
+
+{
+    "recipe_name" : "Risotto with Asparagus and Bison Bacon",
+    "ingredients" : [
+        "asparagus spears, trimmed", 
+        "olive oil", 
+        "butter", 
+        "chopped onion", 
+        "uncooked Arborio or long-grain rice", 
+        "chicken broth", 
+        "black pepper", 
+        "bison bacon", 
+        "freshly grated Parmesan cheese"
+    ]
+},
+
+{
+    "recipe_name" : "Balsamic Bruschetta",
+    "ingredients" : [
+        "roma (plum) tomatoes, diced", 
+        "chopped fresh basil", 
+        "shredded Parmesan cheese", 
+        "garlic, minced", 
+        "balsamic vinegar", 
+        "olive oil", 
+        "kosher salt", 
+        "freshly ground black pepper", 
+        "French bread, toasted and sliced"
+    ]
+},
+
+{
+    "recipe_name" : "American Ceviche",
+    "ingredients" : [
+        "cooked medium shrimp, peeled and deveined", 
+        "imitation crabmeat, cut into 1-inch pieces", 
+        "tomatoes, diced", 
+        "avocados, peeled and diced", 
+        "English cucumber, peeled and cut into bite-size pieces", 
+        "red onion, diced", 
+        "cilantro, chopped, or more to taste", 
+        "limes, juiced", 
+        "jalapeno peppers, seeded and finely diced", 
+        "garlic, pressed", 
+        "tomato and clam juice cocktail", 
+        "salt and ground black pepper to taste"
+    ]
+},
+
+{
+    "recipe_name" : "Creamy Strawberry Crepes",
+    "ingredients" : [
+        "eggs", 
+        "milk", 
+        "water", 
+        "butter, melted", 
+        "all-purpose flour", 
+        "salt", 
+        " ", 
+        "cream cheese, softened", 
+        "sifted confectioners' sugar", 
+        "lemon juice", 
+        "lemon zest", 
+        "vanilla extract", 
+        "heavy cream, whipped", 
+        "sliced strawberries"
+    ]
+},
+
+{
+    "recipe_name" : "Korean Sushi",
+    "ingredients" : [
+        "uncooked short-grain white rice", 
+        "water", 
+        "cider vinegar", 
+        "chard", 
+        "eggs, well beaten", 
+        "soy sauce, divided", 
+        "water", 
+        "onion, diced", 
+        "vegetable oil", 
+        "beef tenderloin, minced", 
+        "chunk light tuna in water, drained", 
+        "carrot, julienned", 
+        "cucumber, julienned", 
+        "nori (dry seaweed)"
+    ]
+},
+
+{
+    "recipe_name" : "Chicken and Rice Burritos",
+    "ingredients" : [
+        "Minute® Ready to Serve Brown Rice", 
+        "salsa", 
+        "cooked, diced chicken", 
+        "shredded Cheddar cheese", 
+        "whole wheat tortillas", 
+        "chopped fresh cilantro leaves", 
+        "sour cream"
+    ]
+},
+
+{
+    "recipe_name" : "Angela's Awesome Enchiladas",
+    "ingredients" : [
+        "skinless, boneless chicken breast meat - cut into chunks", 
+        "condensed cream of chicken soup", 
+        "sour cream", 
+        "chili powder", 
+        "butter", 
+        "onion, chopped", 
+        "chopped green chilies, drained", 
+        "mild taco seasoning mix", 
+        "green onions, chopped, divided", 
+        "water", 
+        "lime juice", 
+        "onion powder", 
+        "garlic powder", 
+        "flour tortillas", 
+        "Cheddar cheese, shredded, divided", 
+        "enchilada sauce", 
+        "sliced black olives"
+    ]
+}
+
+]
