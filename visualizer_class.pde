@@ -9,73 +9,52 @@ class Visualizer{
   ArrayList<Node> nodes;
   ArrayList<Link> links;
   String method = "FORCE_DIRECTED";
-  String limit = "normal";
+  String attribute_limit = "normal";
   color wine_red = color(255, 100, 50);
   color deep_blue = color(20, 20, 255);
   color white = color(255, 255, 255);
   color gray = color(200, 200, 200);
   color black = color(0, 0, 0);
-  
   Visualizer(ArrayList<Node> in_nodes, ArrayList<Link> in_links) {
     nodes = in_nodes;
     links = in_links;
   }
-
+  
   void run(){
     if (method == "FORCE_DIRECTED") {
       run_force_directed();
     }else if (method == "CIRCLE") {
       run_circle();
     }
-    
     for (Link link : links) {
       PVector from_posi = nodes.get(link.from_id).p;
       PVector to_posi = nodes.get(link.to_id).p;
-      if(!nodes.get(link.from_id).findAttribute(limit) ||
-         !nodes.get(link.to_id).findAttribute(limit)) {
+      if(!nodes.get(link.from_id).findAttribute(attribute_limit) ||
+         !nodes.get(link.to_id).findAttribute(attribute_limit)) {
            continue;
       }
       stroke_color(gray);
-      if(nodes.get(link.from_id).findAttribute("stable") &&
-         nodes.get(link.to_id).findAttribute("stable")){
-        stroke_color(wine_red);
-      }else  if(nodes.get(link.from_id).findAttribute("selecting") &&
-                nodes.get(link.to_id).findAttribute("selecting")){
-        stroke_color(deep_blue);
-      }else{
-        stroke_color(gray);
-      }
       line(from_posi.x, from_posi.y, to_posi.x, to_posi.y);
       stroke_color(black);
     }
-    
     for (Node node : nodes) {
-      if(!node.findAttribute(limit)){
+      if(!node.findAttribute(attribute_limit)){
         continue;
       }
-      if(node.findAttribute("stable")){
-        stroke_color(wine_red);
-        fill_color(wine_red);
-      }else if(node.findAttribute("selecting")){
-        stroke_color(deep_blue);
-        fill_color(deep_blue);
-      }else {
-        stroke_color(black);
-        fill_color(black);
-      }
+      stroke_color(black);
+      fill_color(black);
       ellipse(node.p.x, node.p.y, 10, 10);
       textSize(20);
       text(node.name, node.p.x, node.p.y-5);
       stroke_color(white);
       fill_color(white);
     }
-    
   }
   
   void run_circle(){
     int cnt = 0;
     for(Node node : nodes){
-      if(!node.findAttribute(limit)){
+      if(!node.findAttribute(attribute_limit)){
         continue;
       }
       cnt++;
@@ -84,7 +63,7 @@ class Visualizer{
     PVector center = new PVector(width/2, height/2);
     cnt = 0;
     for (Node node : nodes) {
-      if(!node.findAttribute(limit)){
+      if(!node.findAttribute(attribute_limit)){
         continue;
       }
       cnt++;
@@ -95,12 +74,12 @@ class Visualizer{
   
   void run_force_directed() {
     for (Node node1 : nodes) {
-      if(!node1.findAttribute(limit)){
+      if(!node1.findAttribute(attribute_limit)){
         continue;
       }
       PVector f = new PVector(0, 0);
       for (Node node2 : nodes) {
-        if(!node2.findAttribute(limit)){
+        if(!node2.findAttribute(attribute_limit)){
           continue;
         }
         if ( node1.id == node2.id ) continue;
@@ -143,11 +122,10 @@ class Visualizer{
   }
    
   void stroke_color(color c){
-    stroke(red(c), green(c), blue(c));
+    stroke(red(c), green(c), blue(c), 100);
   }
   
   void fill_color(color c){
-    alpha(c);
-    fill(red(c), green(c), blue(c));
+    fill(red(c), green(c), blue(c), 200);
   }
 }

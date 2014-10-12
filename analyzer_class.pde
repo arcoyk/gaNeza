@@ -9,39 +9,6 @@ class Analyzer{
   void init(){
   }
   
-  int link_count(ArrayList<Node> nodes){
-    int count = 0;
-    for(Node node1 : nodes){
-      for(Node node2 : nodes){
-        if(connected(node1, node2)){
-          count++;
-        }
-      }
-    }
-    return count;
-  }
-  
-  float link_distribution(ArrayList<Node> nodes){
-    ArrayList<Integer> hub_point = new ArrayList<Integer>();
-    for(Node node1 : nodes){
-      int count = 0;
-      for(Node node2 : nodes){
-        if(connected(node1, node2)){
-          count++;
-        }
-      }
-      hub_point.add(count);
-    }
-    float distribution = 0;
-    for(Integer point1 : hub_point){
-      for(Integer point2 : hub_point){
-        distribution += abs(point1 - point2);
-      }
-    }
-    distribution /= 2;
-    return distribution/nodes.size();
-  }
-  
   boolean connected(Node n1, Node n2) {
     for(Link link : links){
       int id1 = n1.id;
@@ -51,22 +18,5 @@ class Analyzer{
       }
     }
     return false;
-  }
-  
-  boolean isNetwork(ArrayList<Node> nodes){
-    for(Node node1 : nodes){
-      boolean connected_someone = false;
-      for(Node node2 : nodes){
-        if(connected(node1, node2)){
-          connected_someone = true;
-          break;
-        }
-      }
-      if(!connected_someone){
-        return false;
-      }
-    }
-    return true;
-  }
-        
+  }     
 }

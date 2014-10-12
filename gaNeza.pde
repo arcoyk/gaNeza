@@ -8,61 +8,9 @@ void setup() {
   network.visualizer.method = "FORCE_DIRECTED";
 }
 
-ArrayList<Node> nodes;
-float max_point = 0;
-boolean stop = false;
-
-float stable_dist, stable_links, stable_point;
 void draw() {
-  if(stop) return;
-  //analysis
-  ArrayList<Node> cand_nodes = new ArrayList<Node>();
-  Node crr_node = network.nodes.get((int)random(network.nodes.size()));
-  for(int i=0; i<(int)random(6, 6); i++){
-    //nodes.add(network.getRandomNode());
-    ArrayList<Node> next_nodes = new ArrayList<Node>();
-    for(Link link : network.links){
-      if(link.from_id == crr_node.id){
-        for(Node node : network.nodes){
-          if(link.to_id == node.id){
-            next_nodes.add(node);
-            break;
-          }
-        }
-      }else if(link.to_id == crr_node.id){
-        for(Node node : network.nodes){
-          if(link.from_id == node.id){
-            next_nodes.add(node);
-            break;
-          }
-        }
-      }
-    }
-    crr_node = next_nodes.get((int)random(next_nodes.size()));
-    cand_nodes.add(crr_node);
-  }
-
-  network.flushAttribute("selecting");
-  network.addAttribute(cand_nodes, "selecting");
-  int link_count = network.analyzer.link_count(cand_nodes);
-  float link_distribution = network.analyzer.link_distribution(cand_nodes);
-  float link_count_per_node = link_count/cand_nodes.size();
-  float point = link_distribution / link_count_per_node;
-  if(point > max_point){
-    stable_dist = link_distribution;
-    stable_links = link_count_per_node;
-    stable_point = point;
-    max_point = point;
-    network.flushAttribute("stable");
-    network.addAttribute(cand_nodes, "stable");
-  }
-
   background(255);
   network.show();
-  fill(0);
-  /*text("deviation : "+stable_dist+"\n"+
-       "links per node : "+stable_links+"\n"+
-       "point : "+stable_point, 200, 200);*/
 }
 
 void mousePressed(){
@@ -74,16 +22,14 @@ void mouseDragged(){
 }
 
 void keyPressed(){
-  if (key == 'a') {
-    stop = !stop;
-  }else if(key == 'c'){
+  if(key == 'c'){
     network.visualizer.method = "CIRCLE";
   }else if(key == 'f'){
     network.visualizer.method = "FORCE_DIRECTED";
   }else if(key == 's'){
-    network.visualizer.limit = "stable";
+    network.visualizer.attribute_limit = "Korean Sushi";
   }else if(key == 'n'){
-    network.visualizer.limit = "normal";
+    network.visualizer.attribute_limit = "normal";
   }else if(key == 'S'){
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }
