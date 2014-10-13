@@ -1,10 +1,10 @@
 //This software is released under the MIT License.
 //Copyright(c) 2014 Yui Arco Kita
-some
+
 Ganeza network;
 void setup() {
   size(1100, 700);
-  network = new Ganeza("recipe_ethnic_american.json");
+  network = new Ganeza("sample.json");
   network.visualizer.method = "FORCE_DIRECTED";
 }
 

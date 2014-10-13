@@ -2,7 +2,7 @@ gaNeza
 ======
 gaNeza is a network graph visualizer / analyzer
 see also: http://bluedog.herokuapp.com/
-![alt tag](http://bluedog.herokuapp.com/acd.png)
+![alt tag](http://bluedog.herokuapp.com/gaNeza/forced.png)
 
 HOWTO
 ======
@@ -63,4 +63,4 @@ void draw(){
 
 Step3. Run
 
-![alt tag](http://bluedog.herokuapp.com/sample.png)
+![alt tag](http://bluedog.herokuapp.com/gaNeza/simple.png)
