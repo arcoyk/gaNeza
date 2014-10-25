@@ -7,63 +7,67 @@ class Visualizer{
   int circle_rad = 200;
   int size_limit = 1500;
   ArrayList<Node> nodes;
-  ArrayList<Link> links;
   String method = "FORCE_DIRECTED";
-  String attribute_limit = "normal";
+  String attribute_hide = "normal";
   color wine_red = color(255, 100, 50);
   color deep_blue = color(20, 20, 255);
   color white = color(255, 255, 255);
   color gray = color(200, 200, 200);
   color black = color(0, 0, 0);
-  Visualizer(ArrayList<Node> in_nodes, ArrayList<Link> in_links) {
+  Visualizer(ArrayList<Node> in_nodes) {
     nodes = in_nodes;
-    links = in_links;
   }
   
-  void run(){
+  void visualize(){
     if (method == "FORCE_DIRECTED") {
-      run_force_directed();
+      force_directed();
     }else if (method == "CIRCLE") {
-      run_circle();
+      circle();
     }
-    for (Link link : links) {
-      PVector from_posi = nodes.get(link.from_id).p;
-      PVector to_posi = nodes.get(link.to_id).p;
-      if(!nodes.get(link.from_id).findAttribute(attribute_limit) ||
-         !nodes.get(link.to_id).findAttribute(attribute_limit)) {
-           continue;
+    show();   
+  }
+  
+  void show(){
+    for (Node node : nodes) {
+      if (!node.findAttribute(attribute_hide)) {
+        continue;
       }
-      stroke_color(gray);
-      line(from_posi.x, from_posi.y, to_posi.x, to_posi.y);
-      stroke_color(black);
+      for (Link link : node.links) {
+        if (!link.to_node.findAttribute(attribute_hide)) {
+          continue;
+        }
+        stroke_color(gray);
+        line(node.p.x, node.p.y, link.to_node.p.x, link.to_node.p.y);
+        stroke_color(black);
+      }
     }
     for (Node node : nodes) {
-      if(!node.findAttribute(attribute_limit)){
+      if (!node.findAttribute(attribute_hide)) {
         continue;
       }
       stroke_color(black);
       fill_color(black);
-      ellipse(node.p.x, node.p.y, 10, 10);
       textSize(20);
-      text(node.name, node.p.x, node.p.y-5);
+      ellipse(node.p.x, node.p.y, 10, 10);
+      text(node.name, node.p.x, node.p.y - 5);
       stroke_color(white);
       fill_color(white);
     }
   }
   
-  void run_circle(){
+  void circle(){
     int cnt = 0;
-    for(Node node : nodes){
-      if(!node.findAttribute(attribute_limit)){
+    for (Node node : nodes) {
+      if (!node.findAttribute(attribute_hide)) {
         continue;
       }
       cnt++;
     }
-    float interval = 2*PI/cnt;
+    float interval = 2 * PI / cnt;
     PVector center = new PVector(width/2, height/2);
     cnt = 0;
     for (Node node : nodes) {
-      if(!node.findAttribute(attribute_limit)){
+      if(!node.findAttribute(attribute_hide)){
         continue;
       }
       cnt++;
@@ -72,17 +76,17 @@ class Visualizer{
     }
   }
   
-  void run_force_directed() {
+  void force_directed() {
     for (Node node1 : nodes) {
-      if(!node1.findAttribute(attribute_limit)){
+      if(!node1.findAttribute(attribute_hide)){
         continue;
       }
       PVector f = new PVector(0, 0);
       for (Node node2 : nodes) {
-        if(!node2.findAttribute(attribute_limit)){
+        if(!node2.findAttribute(attribute_hide)){
           continue;
         }
-        if ( node1.id == node2.id ) continue;
+        if ( node1 == node2 ) continue;
         f.add(force(node1, node2));
       }
       node1.v.x += f.x/M;
@@ -96,25 +100,27 @@ class Visualizer{
 
   PVector force(Node n1, Node n2) {
     PVector f = new PVector();
-    float F = C / pow( PVector.dist(n1.p, n2.p), 2);
+    float F = C / pow(PVector.dist(n1.p, n2.p), 2);
     F = F > f_limit ? f_limit : F;
-    f.x -= F * (n2.p.x-n1.p.x) / PVector.dist(n1.p, n2.p);
-    f.y -= F * (n2.p.y-n1.p.y) / PVector.dist(n1.p, n2.p);
-    if (connected(n1, n2)) {
+    f.x -= F * (n2.p.x - n1.p.x) / PVector.dist(n1.p, n2.p);
+    f.y -= F * (n2.p.y - n1.p.y) / PVector.dist(n1.p, n2.p);
+    if (is_connected(n1, n2)) {
       F = J * ( PVector.dist(n1.p, n2.p) - L);
       F = F > f_limit ? f_limit : F;
-      f.x += F * (n2.p.x-n1.p.x) / PVector.dist(n1.p, n2.p);
+      f.x += F * (n2.p.x - n1.p.x) / PVector.dist(n1.p, n2.p);
       f.y += F * (n2.p.y - n1.p.y) / PVector.dist(n1.p, n2.p);
     }
     return f;
   }
   
-  boolean connected(Node n1, Node n2) {
-    for(int i=0; i<links.size(); i++){
-      int id1 = n1.id;
-      int id2 = n2.id;
-      Link link = links.get(i);
-      if((link.from_id == id1 && link.to_id == id2) || (link.from_id == id2 && link.to_id == id1)){
+  boolean is_connected(Node node1, Node node2) {
+    for (Link link : node1.links) {
+      if (link.to_node == node2) {
+        return true;
+      }
+    }
+    for(Link link : node2.links) {
+      if (link.to_node == node1) {
         return true;
       }
     }

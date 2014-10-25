@@ -1,10 +1,10 @@
 //This software is released under the MIT License.
 //Copyright(c) 2014 Yui Arco Kita
-some
+
 Ganeza network;
 void setup() {
   size(1100, 700);
-  network = new Ganeza("recipe_ethnic_american.json");
+  network = new Ganeza("sample.json");
   network.visualizer.method = "FORCE_DIRECTED";
 }
 
@@ -27,9 +27,9 @@ void keyPressed(){
   }else if(key == 'f'){
     network.visualizer.method = "FORCE_DIRECTED";
   }else if(key == 's'){
-    network.visualizer.attribute_limit = "Korean Sushi";
+    network.visualizer.attribute_hide = "Korean Sushi";
   }else if(key == 'n'){
-    network.visualizer.attribute_limit = "normal";
+    network.visualizer.attribute_hide = "normal";
   }else if(key == 'S'){
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }
