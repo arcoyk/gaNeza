@@ -4,7 +4,7 @@ class Visualizer {
   int L = 50;
   int M = 10;
   int f_limit = 10;
-  int circle_rad = 200;
+  int min_dist = 30;
   int size_limit = 1500;
   ArrayList<Node> nodes;
   String method = "FORCE_DIRECTED";
@@ -24,7 +24,7 @@ class Visualizer {
     }else if (method == "CIRCLE") {
       circle();
     }
-    show();   
+    show();
   }
   
   void show() {
@@ -63,6 +63,7 @@ class Visualizer {
       }
       cnt++;
     }
+    float circle_rad = min_dist / (2 * sin(PI / cnt));
     float interval = 2 * PI / cnt;
     PVector center = new PVector(width/2, height/2);
     cnt = 0;
