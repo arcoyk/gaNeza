@@ -29,7 +29,7 @@ void keyPressed(){
   }else if(key == 'f'){
     network.visualizer.method = "FORCE_DIRECTED";
   }else if(key == 'a'){
-    network.visualizer.attribute_limit = "country1";
+    network.visualizer.attribute_hide = "country1";
   }else if(key == 'n'){
     network.visualizer.attribute_hide = "normal";
   }else if(key == 'S'){
