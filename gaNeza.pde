@@ -31,7 +31,7 @@ void keyPressed(){
   }else if(key == 'a'){
     network.visualizer.attribute_limit = "country1";
   }else if(key == 'n'){
-    network.visualizer.attribute_limit = "normal";
+    network.visualizer.attribute_hide = "normal";
   }else if(key == 'S'){
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }
