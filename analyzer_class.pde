@@ -1,10 +1,10 @@
-class Analyzer{
+class Analyzer {
   ArrayList<Node> nodes;
-  Analyzer(ArrayList<Node> nodes_in){
+  Analyzer(ArrayList<Node> nodes_in) {
     nodes = nodes_in;
   }
   
-  void init(){
+  void init() {
   }
   
   boolean is_connected(Node node1, Node node2) {
