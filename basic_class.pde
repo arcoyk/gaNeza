@@ -13,7 +13,7 @@ class Ganeza {
     //nodes
     for (int i=0; i<node_data_array.size(); i++) {
       JSONObject node_data = node_data_array.getJSONObject(i);
-      Node node = new Node(new PVector(random(width),random(height)), new PVector(0, 0));
+      Node node = new Node(new PVector(random(width), random(height)), new PVector(0, 0));
       node.name = node_data.getString("node_name");
       String[] attrs = node_data.getJSONArray("attributes").getStringArray();
       for (int m = 0; m < attrs.length; m++) {
@@ -60,6 +60,8 @@ class Ganeza {
   }
   
   void show() {
+    translate(width / 2 - width * view.scale / 2, height / 2 - height * view.scale / 2);
+    scale(view.scale);
     translate(view.view_point.x, view.view_point.y);
     visualizer.visualize();
   }
@@ -141,11 +143,15 @@ class View {
   }
   
   void mouseDragged() {
-    view_point.x = view_point_anchor.x + (mouseX - mouse_anchor.x);
-    view_point.y = view_point_anchor.y + (mouseY - mouse_anchor.y);
+    scale = scale == 0 ? 0.2 : scale;
+    view_point.x = view_point_anchor.x + (mouseX - mouse_anchor.x) / scale;
+    view_point.y = view_point_anchor.y + (mouseY - mouse_anchor.y) / scale;
   }
   
   void mouseWheel(MouseEvent event){
-    scale += event.getCount() / 10.0;
+    scale += event.getCount() / 100.0;
+    if(scale < 0.2){
+      scale = 0.2;
+    }
   }
 }
