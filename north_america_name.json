@@ -2,503 +2,503 @@
     "nodes": [
 {
 "node_name":"Smith",
-"link_to": ["Miller","Harris","Morgan","Myers","Morales","Adams","Miller","Turner","Ross"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Hill"],
+"attributes":["country0"]
 },
 {
 "node_name":"Johnson",
-"link_to": ["Hill","Nguyen","Green","Green","Fisher","Clark","Green","Martin","Bennett"],
-"attribute":["country0","country1"]
+"link_to": ["Flores","Wood","Cox","García","Green","Morales","Williams","Stewart","Rivera"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Williams",
-"link_to": ["Reed","Mitchell","Sánchez","Gutiérrez","Cooper","Scott","Hall","Myers","Ortiz"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": [],
+"attributes":[]
 },
 {
 "node_name":"Brown",
-"link_to": ["Smith","Cooper","Bell"],
-"attribute":["country0","country1"]
+"link_to": ["Torres","Ramírez","Davis"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Jones",
-"link_to": ["Davis","García","Lewis","Barnes","King","Long","Jenkins"],
-"attribute":["country0"]
+"link_to": ["Martin"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Miller",
-"link_to": ["Clark","Cooper","Roberts","Ward","Mitchell","Roberts","James","Walker"],
-"attribute":["country0"]
+"link_to": ["Hughes","Ramírez","Myers","Williams","Cook","Peterson","González","Stewart","Young"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Davis",
-"link_to": ["James"],
-"attribute":["country0","country1"]
+"link_to": ["Campbell","Murphy","Bailey","King","Robinson","Mitchell","Wright","Rodríguez","Long"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"García",
-"link_to": ["Gómez","Green","Cooper","Price","Evans","Brown","White","Collins","Reyes"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["López"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Rodríguez",
-"link_to": ["Morris"],
-"attribute":[]
+"link_to": ["Hill","Morales","Morris","Martínez","Roberts","Gray","Evans","Gómez","Bailey"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Wilson",
-"link_to": ["Kelly","Hughes","Torres","Martin"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Peterson","Taylor","Lee","Díaz","Long","Campbell","López"],
+"attributes":["country0"]
 },
 {
 "node_name":"Martínez",
-"link_to": ["Murphy","Evans","García","Clark","Hill"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Ward","Allen","Gutiérrez","Nguyen","Richardson"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Anderson",
-"link_to": [],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Campbell","Gutiérrez","González","Gómez","Young","Thomas","Gray","Nguyen","Hall"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Taylor",
-"link_to": ["James","López","Cooper","Campbell","Mitchell","Bailey"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Hernández","Torres","Hall","Carter","Brown","Carter"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Thomas",
-"link_to": ["Jones","Richardson","Wright","Kelly","Flores","Flores"],
-"attribute":[]
+"link_to": ["Wilson","Flores","Bennett","Hill","Clark","Wright","Brooks"],
+"attributes":[]
 },
 {
 "node_name":"Hernández",
-"link_to": ["Martin","Young","Clark"],
-"attribute":["country0","country1"]
+"link_to": ["Murphy","Peterson","Morris","Turner","Watson","Ramírez","Watson","Ramírez"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Moore",
-"link_to": [],
-"attribute":["country0"]
+"link_to": ["Butler","Thomas"],
+"attributes":[]
 },
 {
 "node_name":"Martin",
-"link_to": ["Carter","López","Gray","Brown","Gray","Ortiz","González","Cruz","Robinson"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Ortiz","Morgan","Moore","Green","Watson","Roberts","Barnes"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Jackson",
-"link_to": ["Reyes","Roberts"],
-"attribute":[]
+"link_to": ["Carter","Russell","Johnson","Jones","Gutiérrez","Davis","Long","Bennett"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Thompson",
-"link_to": ["Jenkins","Pérez","Kelly","Johnson"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Mitchell","Cruz","Jenkins","Reyes","Sánchez"],
+"attributes":[]
 },
 {
 "node_name":"White",
-"link_to": ["López","Pérez","Hughes","Harris"],
-"attribute":["country0"]
+"link_to": ["Thompson","Ramírez"],
+"attributes":[]
 },
 {
 "node_name":"López",
-"link_to": ["Jackson","Hill"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Russell"],
+"attributes":[]
 },
 {
 "node_name":"Lee",
-"link_to": ["Turner","Cox","Rodríguez","Roberts","Perry","White","Taylor"],
-"attribute":["country0","country1"]
+"link_to": ["Price","Nguyen","Fisher","Bell"],
+"attributes":[]
 },
 {
 "node_name":"González",
-"link_to": ["Brooks","Martínez","Díaz"],
-"attribute":[]
+"link_to": ["James","Rogers","Rivera"],
+"attributes":[]
 },
 {
 "node_name":"Harris",
-"link_to": ["Richardson","Ward","Martínez"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Morris"],
+"attributes":["country0"]
 },
 {
 "node_name":"Clark",
-"link_to": ["Mitchell","Morris","Richardson","Russell","Gray","Torres"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Sánchez","Robinson","Green","Cook"],
+"attributes":["country0"]
 },
 {
 "node_name":"Lewis",
-"link_to": ["Foster","Davis","Moore","Stewart","Thompson","Reyes","Hernández"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": [],
+"attributes":["country0"]
 },
 {
 "node_name":"Robinson",
-"link_to": ["Myers","Gómez","Williams","Gray"],
-"attribute":["country0","country1"]
+"link_to": ["Peterson","Green","Rodríguez","Moore","Bell","Miller"],
+"attributes":[]
 },
 {
 "node_name":"Walker",
-"link_to": ["Cruz","Flores","Morales","Lewis"],
-"attribute":[]
+"link_to": ["Cooper","Russell","Bennett","Ross","Turner","Thompson"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Pérez",
-"link_to": ["Turner"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Walker","Thomas"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Hall",
-"link_to": ["Kelly"],
-"attribute":["country0","country1"]
+"link_to": ["Robinson","Hill","Wood","Clark"],
+"attributes":["country0"]
 },
 {
 "node_name":"Young",
-"link_to": [],
-"attribute":[]
+"link_to": ["Campbell","Bell","Barnes","Martin","Edwards","Scott","Sanders","Gómez","King"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Allen",
-"link_to": ["Turner","Young"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Walker","López"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Sánchez",
-"link_to": ["Jones"],
-"attribute":[]
+"link_to": [],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Wright",
-"link_to": [],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Clark","Nelson","Jones","Fisher","Jackson","Smith","Allen","Roberts"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"King",
-"link_to": ["Reed","Evans","Lee"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Rivera","Scott"],
+"attributes":[]
 },
 {
 "node_name":"Scott",
-"link_to": ["Rodríguez"],
-"attribute":["country0"]
+"link_to": ["Jones","Reed","Ross","Ross","Ortiz","Lewis"],
+"attributes":[]
 },
 {
 "node_name":"Green",
-"link_to": ["Collins","Roberts","Perry","Gray","Nguyen","Carter","Kelly"],
-"attribute":["country0"]
+"link_to": ["Harris","Hall","Morris","Hill","Wilson","Peterson"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Baker",
-"link_to": ["Hill","Stewart","Rogers","Watson","Adams","Thompson","Flores","Johnson","Nguyen"],
-"attribute":["country0"]
+"link_to": ["Collins","Flores"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Adams",
-"link_to": ["Torres","Brooks","Phillips","Gómez","Russell"],
-"attribute":["country0","country1"]
+"link_to": ["Flores","Phillips"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Nelson",
-"link_to": ["Ramírez"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Edwards","Richardson","Williams","Wright","Davis","Taylor","Watson","Turner","Baker"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Hill",
-"link_to": ["Flores"],
-"attribute":["country0","country1"]
+"link_to": ["Turner","Sullivan","Scott"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Ramírez",
-"link_to": ["Pérez","Green","Bell","Ortiz","Hall"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Gray","Young","Mitchell","Green"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Campbell",
-"link_to": ["Cooper","Baker","Powell","Mitchell","Lee","Ramírez","García","Wright","Rivera"],
-"attribute":["country0"]
+"link_to": ["Myers"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Mitchell",
-"link_to": ["Hernández","King","Morris","Reed","Sullivan","Bell","James"],
-"attribute":["country0","country1"]
+"link_to": [],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Roberts",
-"link_to": ["Perry","Smith","Miller","Peterson"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Martínez","Young","Hughes","Clark","Carter","Morales","González","Howard"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Carter",
-"link_to": ["Evans","Parker","Harris","Gutiérrez","Thompson"],
-"attribute":["country0"]
+"link_to": ["Bailey","Wright","Scott","Young","Cooper","Wood","Watson"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Phillips",
-"link_to": ["Davis","Johnson","Bailey","Thompson","Cooper"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Anderson","James","Martin","Sanders","Nelson","Morris","Roberts","Phillips"],
+"attributes":[]
 },
 {
 "node_name":"Evans",
-"link_to": ["Harris","Ramírez"],
-"attribute":[]
+"link_to": [],
+"attributes":[]
 },
 {
 "node_name":"Turner",
-"link_to": ["Martínez","Scott"],
-"attribute":["country0"]
+"link_to": ["Peterson","Sullivan","Clark","Díaz","Russell","Sánchez","Brown"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Torres",
-"link_to": ["Phillips","Reed","Ramírez","Foster","Evans","Russell","Johnson"],
-"attribute":["country0"]
+"link_to": ["Allen","Hill","Roberts","Myers","López","Rivera"],
+"attributes":[]
 },
 {
 "node_name":"Parker",
-"link_to": ["Cox","Evans","Phillips","Myers","Scott","Reyes"],
-"attribute":[]
+"link_to": [],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Collins",
-"link_to": ["Reed","Russell","Davis","Carter","Gutiérrez","González","King"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Hernández","Evans","Reyes","Powell","Lewis","Rivera","Hughes"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Edwards",
-"link_to": ["Sanders","Rogers","Green","Flores","Morgan","King","Campbell"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Hill","Rodríguez"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Stewart",
-"link_to": ["Pérez","Butler","Evans","Sánchez","Morris"],
-"attribute":[]
+"link_to": ["Barnes","Howard","Edwards","Morales","Butler","Watson","Barnes","Morgan"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Flores",
-"link_to": ["Phillips","Williams","Reyes","Barnes","Cooper"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Foster","White"],
+"attributes":["country0"]
 },
 {
 "node_name":"Morris",
-"link_to": ["Williams","García","Jones","Brooks","Murphy","Foster","Lewis","Kelly"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Wilson","Ross","Nelson","Wood","Howard","Thomas"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Nguyen",
-"link_to": ["Walker","Sullivan","Reed","Jenkins","Bennett"],
-"attribute":["country0","country1"]
+"link_to": ["Anderson","Davis","Thompson","Jones","Reed"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Murphy",
-"link_to": ["Miller","Thompson"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Clark","Hall","Price","Adams","Hall","Kelly","Hill","Baker","Sullivan"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Rivera",
-"link_to": ["Ramírez","Hernández","Wright"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Adams","Roberts","Evans","Scott"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Cook",
-"link_to": ["Sullivan","Walker","Morris","King","Stewart","Jackson"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Foster","Williams"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Rogers",
-"link_to": ["Bennett","Sanders"],
-"attribute":["country0","country1"]
+"link_to": ["Anderson","Morales","Taylor","Jackson","Baker"],
+"attributes":["country0"]
 },
 {
 "node_name":"Morgan",
-"link_to": ["Phillips","Johnson","Morales","Bell"],
-"attribute":["country0"]
+"link_to": ["Bailey","Myers","Sánchez"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Peterson",
-"link_to": ["Russell","Flores","Edwards"],
-"attribute":[]
+"link_to": ["Morales","Long","Allen","Pérez"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Cooper",
-"link_to": ["Green","Thompson","Howard","Price"],
-"attribute":[]
+"link_to": ["Phillips","Foster","Sánchez","Cox","Hill","Morales","Gray"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Reed",
-"link_to": ["Carter"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Rodríguez","Myers","Hall","Wright","Ross","Peterson"],
+"attributes":["country0"]
 },
 {
 "node_name":"Bailey",
-"link_to": ["Anderson","Butler","Rivera","Nelson","Cooper","Watson","Gómez","Ramírez","Cruz"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Jackson","Russell","Ross","Morris"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Bell",
-"link_to": ["Turner","Murphy","Robinson","Wood","Taylor"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Cruz","Jenkins","Morgan"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Gómez",
-"link_to": ["Robinson","Torres","Mitchell","Torres","Martin","Díaz","Russell","Hernández","Taylor"],
-"attribute":["country0","country1","country2"]
+"link_to": [],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Kelly",
-"link_to": ["Sanders","Thompson","Morris","Peterson","Sullivan","Watson","Lee","Howard"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Ramírez","Williams"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Howard",
-"link_to": [],
-"attribute":["country0"]
+"link_to": ["Adams","Smith","Turner","Edwards","Robinson","King"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Ward",
-"link_to": ["González","Scott","Thomas","Bell"],
-"attribute":[]
+"link_to": ["Powell","Evans","Stewart","Lee","Wood"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Cox",
-"link_to": ["Rogers","Sanders","Price","Gutiérrez","Jenkins","Reed","García"],
-"attribute":["country0","country1"]
+"link_to": ["Hill","Cruz","Roberts","Foster"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Díaz",
-"link_to": ["Martínez"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Gray","Harris","Myers","Torres","Jones","Barnes","Allen"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Richardson",
-"link_to": ["Smith"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Gutiérrez","García","Evans","Flores","Morales","Richardson","Parker","Rivera"],
+"attributes":[]
 },
 {
 "node_name":"Wood",
-"link_to": ["Wilson","Young","Hill","Gutiérrez","Harris","Wilson"],
-"attribute":["country0","country1"]
+"link_to": ["Cox","Walker","Sanders","Price","Gutiérrez","Russell","Peterson","Campbell"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Watson",
-"link_to": ["Miller","Reyes","Collins","Peterson","Gómez","Gómez"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Bell","Rogers","Peterson","Flores","Price","Martínez","Butler"],
+"attributes":["country0"]
 },
 {
 "node_name":"Brooks",
-"link_to": ["Green","Young","Russell","Edwards","Gray","Lee","Martínez"],
-"attribute":[]
+"link_to": ["Cruz","Phillips","Evans","Johnson"],
+"attributes":["country0"]
 },
 {
 "node_name":"Bennett",
-"link_to": ["Sanders","Perry","Sánchez","García","Thompson","Brooks","Jenkins","Lee"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Gutiérrez","Cooper","Murphy","Pérez","Turner","Morales","Moore","Bennett"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Gray",
-"link_to": [],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Long","Walker","Morris","Edwards","Sullivan","Reyes"],
+"attributes":["country0"]
 },
 {
 "node_name":"James",
-"link_to": ["White","Martínez","Moore","Hill","Robinson","Morgan"],
-"attribute":[]
+"link_to": ["Brown","Powell"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Reyes",
-"link_to": ["Harris","Robinson","Young","Flores"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Martínez","Thompson","Hughes","Long"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Cruz",
-"link_to": [],
-"attribute":[]
+"link_to": ["Collins","Richardson","Scott"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Hughes",
-"link_to": [],
-"attribute":["country0"]
+"link_to": ["Russell","Smith","Clark","Taylor","Harris","Murphy","Robinson","Jenkins"],
+"attributes":[]
 },
 {
 "node_name":"Price",
-"link_to": [],
-"attribute":["country0"]
+"link_to": ["Miller","Foster","Adams","Hernández"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Myers",
-"link_to": ["Perry","Morales","King","Anderson","Collins","Thomas"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Smith"],
+"attributes":[]
 },
 {
 "node_name":"Long",
-"link_to": ["Evans","Adams","Long","Sánchez","López","Pérez","Thomas","James"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Richardson","Mitchell","Moore"],
+"attributes":[]
 },
 {
 "node_name":"Foster",
-"link_to": ["Bell","Brooks"],
-"attribute":["country0","country1"]
+"link_to": ["Lewis","Miller","García","Fisher","Hall","Cooper","Murphy"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Sanders",
-"link_to": ["Campbell"],
-"attribute":["country0","country1"]
+"link_to": ["Long","Sánchez","Collins","Cook"],
+"attributes":["country0"]
 },
 {
 "node_name":"Ross",
-"link_to": [],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Gómez"],
+"attributes":[]
 },
 {
 "node_name":"Morales",
-"link_to": ["Brooks"],
-"attribute":["country0","country1","country2"]
+"link_to": ["González","Nelson","Rivera","Rivera","Howard"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Powell",
-"link_to": ["Scott","Richardson","Price","Reed","Ortiz","Moore","Hill","Rivera"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["García"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Sullivan",
-"link_to": ["Reed","Mitchell","Wright","Flores","Jackson"],
-"attribute":[]
+"link_to": ["Taylor","Morris","Miller","García","Cooper","King"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Russell",
-"link_to": ["Wright","Edwards","Harris","Hall","Hughes","Reyes","Carter"],
-"attribute":["country0","country1"]
+"link_to": ["Thompson","Sanders","Cook","Martínez","Long","Perry","Sanders","Scott","Edwards"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Ortiz",
-"link_to": [],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Bennett","Nelson"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Jenkins",
-"link_to": ["Moore","Ortiz","Miller","Harris"],
-"attribute":["country0"]
+"link_to": ["Parker","Mitchell","Stewart","Pérez","Smith","Allen"],
+"attributes":["country0","country1"]
 },
 {
 "node_name":"Gutiérrez",
-"link_to": ["Fisher","Torres","Díaz","Long","Powell","Long","Allen","Phillips"],
-"attribute":["country0"]
+"link_to": ["Martínez","Williams","Smith","Reyes","Hernández","López","Bennett","Evans","Campbell"],
+"attributes":["country0"]
 },
 {
 "node_name":"Perry",
-"link_to": ["Mitchell","Bennett","Sullivan","Martínez","Russell","Green"],
-"attribute":[]
+"link_to": ["Williams","González","Evans"],
+"attributes":["country0","country1","country2","country3"]
 },
 {
 "node_name":"Butler",
-"link_to": ["Nelson","Brown","Miller","Díaz","Roberts","Martínez","Cox","Carter"],
-"attribute":["country0","country1","country2"]
+"link_to": ["Thomas","Edwards","Torres","Williams","Stewart"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Barnes",
-"link_to": ["Collins","Morris","Jenkins","Reyes","Thomas","Thomas","Russell","Davis","Bailey"],
-"attribute":["country0","country1","country2","country3"]
+"link_to": ["Lee","Evans","Taylor","Smith","Sanders","Thomas","Sullivan"],
+"attributes":["country0","country1","country2"]
 },
 {
 "node_name":"Fisher",
-"link_to": ["Mitchell","Díaz","Bailey","Cooper","Wood"],
-"attribute":["country0","country1","country2"]
+"link_to": [],
+"attributes":["country0"]
 },
     ]
 }
