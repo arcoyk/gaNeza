@@ -65,15 +65,11 @@ class Ganeza {
   }
   
   void mousePressed() {
-    view.view_point_anchor.x = view.view_point.x;
-    view.view_point_anchor.y = view.view_point.y;
-    view.mouse_anchor.x = mouseX;
-    view.mouse_anchor.y = mouseY;
+    view.mousePressed();
   }
   
   void mouseDragged() {
-    view.view_point.x = view.view_point_anchor.x + (mouseX - view.mouse_anchor.x);
-    view.view_point.y = view.view_point_anchor.y + (mouseY - view.mouse_anchor.y);
+    view.mouseDragged();
   }
 }
 
@@ -129,6 +125,19 @@ class View {
   float scale = 1.0;
   PVector mouse_anchor = new PVector(0, 0);
   PVector view_point_anchor = new PVector();
+  
   View() {
-  }  
+  }
+  
+  void mousePressed() {
+    view_point_anchor.x = view_point.x;
+    view_point_anchor.y = view_point.y;
+    mouse_anchor.x = mouseX;
+    mouse_anchor.y = mouseY;
+  }
+  
+  void mouseDragged() {
+    view_point.x = view_point_anchor.x + (mouseX - mouse_anchor.x);
+    view_point.y = view_point_anchor.y + (mouseY - mouse_anchor.y);
+  }
 }
