@@ -23,6 +23,10 @@ void mouseDragged() {
   network.mouseDragged();
 }
 
+void mouseWheel(MouseEvent event){
+  network.mouseWheel(event);
+}
+
 void keyPressed() {
   if (key == 'c') {
     network.visualizer.method = "CIRCLE";

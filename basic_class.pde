@@ -71,6 +71,10 @@ class Ganeza {
   void mouseDragged() {
     view.mouseDragged();
   }
+  
+  void mouseWheel(MouseEvent event){
+    view.mouseWheel(event);
+  }
 }
 
 class Link {
@@ -139,5 +143,9 @@ class View {
   void mouseDragged() {
     view_point.x = view_point_anchor.x + (mouseX - mouse_anchor.x);
     view_point.y = view_point_anchor.y + (mouseY - mouse_anchor.y);
+  }
+  
+  void mouseWheel(MouseEvent event){
+    println(event.getCount());
   }
 }
