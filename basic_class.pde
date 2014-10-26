@@ -146,6 +146,6 @@ class View {
   }
   
   void mouseWheel(MouseEvent event){
-    println(event.getCount());
+    scale += event.getCount() / 10.0;
   }
 }
