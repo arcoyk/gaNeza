@@ -20,5 +20,8 @@ class Analyzer{
     }
     return false;
   }
+  
+  ArrayList<Node> shortest_path(Node node1, Node node2){
+  }
 
 }
