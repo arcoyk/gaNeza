@@ -1,10 +1,10 @@
-class Visualizer{
+class Visualizer {
   int C = 130000;
   int J = 1;
   int L = 50;
   int M = 10;
   int f_limit = 10;
-  int circle_rad = 200;
+  int min_dist = 30;
   int size_limit = 1500;
   ArrayList<Node> nodes;
   String method = "FORCE_DIRECTED";
@@ -18,16 +18,16 @@ class Visualizer{
     nodes = in_nodes;
   }
   
-  void visualize(){
+  void visualize() {
     if (method == "FORCE_DIRECTED") {
       force_directed();
     }else if (method == "CIRCLE") {
       circle();
     }
-    show();   
+    show();
   }
   
-  void show(){
+  void show() {
     for (Node node : nodes) {
       if (!node.findAttribute(attribute_hide)) {
         continue;
@@ -55,7 +55,7 @@ class Visualizer{
     }
   }
   
-  void circle(){
+  void circle() {
     int cnt = 0;
     for (Node node : nodes) {
       if (!node.findAttribute(attribute_hide)) {
@@ -63,11 +63,12 @@ class Visualizer{
       }
       cnt++;
     }
+    float circle_rad = min_dist / (2 * sin(PI / cnt));
     float interval = 2 * PI / cnt;
     PVector center = new PVector(width/2, height/2);
     cnt = 0;
     for (Node node : nodes) {
-      if(!node.findAttribute(attribute_hide)){
+      if (!node.findAttribute(attribute_hide)) {
         continue;
       }
       cnt++;
@@ -78,12 +79,12 @@ class Visualizer{
   
   void force_directed() {
     for (Node node1 : nodes) {
-      if(!node1.findAttribute(attribute_hide)){
+      if(!node1.findAttribute(attribute_hide)) {
         continue;
       }
       PVector f = new PVector(0, 0);
       for (Node node2 : nodes) {
-        if(!node2.findAttribute(attribute_hide)){
+        if(!node2.findAttribute(attribute_hide)) {
           continue;
         }
         if ( node1 == node2 ) continue;
@@ -119,7 +120,7 @@ class Visualizer{
         return true;
       }
     }
-    for(Link link : node2.links) {
+    for (Link link : node2.links) {
       if (link.to_node == node1) {
         return true;
       }
@@ -127,11 +128,11 @@ class Visualizer{
     return false;
   }
    
-  void stroke_color(color c){
+  void stroke_color(color c) {
     stroke(red(c), green(c), blue(c), 100);
   }
   
-  void fill_color(color c){
+  void fill_color(color c) {
     fill(red(c), green(c), blue(c), 200);
   }
 }
