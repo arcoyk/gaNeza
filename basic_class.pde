@@ -55,7 +55,7 @@ class Ganeza {
   
   void flushAttribute(String attribute) {
     for (Node node : nodes) {
-      node.delete_attribute(attribute);
+      node.remove_attribute(attribute);
     }
   }
   
@@ -95,7 +95,6 @@ class Node {
   ArrayList<String> attributes = new ArrayList<String>();
   PVector p;
   PVector v;
-  int id;
   Node(PVector p_in, PVector v_in) {
     p = p_in;
     v = v_in;
@@ -106,7 +105,7 @@ class Node {
     attributes.add("normal");
   }
   
-  void delete_attribute(String attr) {
+  void remove_attribute(String attr) {
     ArrayList<String> new_attributes = new ArrayList<String>();
     for (String str : attributes) {
       if (!str.equals(attr)) {
@@ -114,6 +113,10 @@ class Node {
       }
     }
     attributes = new_attributes;
+  }
+  
+  void add_attribute(String attr) {
+    attributes.add(attr);
   }
   
   boolean findAttribute(String attr) {
