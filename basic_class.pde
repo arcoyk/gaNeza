@@ -82,7 +82,7 @@ class Ganeza {
 class Link {
   Node from_node;
   Node to_node;
-  int weight;
+  int weight = 1;
   Link(Node from_node_in, Node to_node_in) {
     from_node = from_node_in;
     to_node = to_node_in;
@@ -94,13 +94,13 @@ class Link {
   }
 }
 
-class Node {
+class Node implements Comparable{
   String name;
   ArrayList<Link> links = new ArrayList<Link>();
   ArrayList<String> attributes = new ArrayList<String>();
   PVector p;
   PVector v;
-  float value;
+  float value = 0;
   Node(PVector p_in, PVector v_in) {
     p = p_in;
     v = v_in;
@@ -133,6 +133,11 @@ class Node {
       }
     }
     return false;
+  }
+  
+  int compareTo(Object other){
+    Node other_node = (Node)other;
+    return (int)(value - other_node.value);
   }
 }
 
