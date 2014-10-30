@@ -1,3 +1,5 @@
+import java.util.Map;
+
 class Visualizer {
   int C = 130000;
   int J = 1;
@@ -8,6 +10,7 @@ class Visualizer {
   int size_limit = 1500;
   ArrayList<Node> nodes;
   String method = "FORCE_DIRECTED";
+  HashMap<String, Integer> attribute_color = new HashMap<String, Integer>();
   String attribute_hide = "normal";
   color wine_red = color(255, 100, 50);
   color deep_blue = color(20, 20, 255);
@@ -52,6 +55,7 @@ class Visualizer {
       text(node.name, node.p.x, node.p.y - 5);
       stroke_color(white);
       fill_color(white);
+      show_highlight();
     }
   }
   
@@ -134,5 +138,25 @@ class Visualizer {
   
   void fill_color(color c) {
     fill(red(c), green(c), blue(c), 200);
+  }
+  
+  void highlight(String attribute, color c){
+    attribute_color.put(attribute, c);
+  }
+  
+  void show_highlight(){
+    for (Node node : nodes) {
+      if (!node.findAttribute(attribute_hide)) {
+        continue;
+      }
+      for(Map.Entry e : attribute_color.entrySet()){
+        String attribute = (String)e.getKey();
+        if(node.findAttribute(attribute)){
+          fill_color((color)(Integer)e.getValue());
+          ellipse(node.p.x, node.p.y, 10, 10);
+        }
+      }
+    }
+    fill_color(white);
   }
 }

@@ -36,6 +36,8 @@ void keyPressed() {
     network.visualizer.attribute_hide = "country1";
   }else if (key == 'n') {
     network.visualizer.attribute_hide = "normal";
+  }else if (key == 'h') {
+    network.visualizer.highlight("country3", color(10, 200, 10));
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }
