@@ -3,6 +3,7 @@ class Ganeza {
   View view = new View();
   Visualizer visualizer = new Visualizer(nodes);
   Analyzer analyzer = new Analyzer(nodes);
+  HashMap<String, ArrayList<Node>> subnetworks = new HashMap<String, ArrayList<Node>>();
   Ganeza(String network_json) {
     init(network_json);
   }
@@ -15,10 +16,10 @@ class Ganeza {
       JSONObject node_data = node_data_array.getJSONObject(i);
       Node node = new Node(new PVector(random(width), random(height)), new PVector(0, 0));
       node.name = node_data.getString("node_name");
-      String[] attrs = node_data.getJSONArray("attributes").getStringArray();
-      for (int m = 0; m < attrs.length; m++) {
-        node.attributes.add(attrs[m]);
-      }
+//      String[] attrs = node_data.getJSONArray("attributes").getStringArray();
+//      for (int m = 0; m < attrs.length; m++) {
+//        node.attributes.add(attrs[m]);
+//      }
       nodes.add(node);
     }
     
@@ -45,18 +46,6 @@ class Ganeza {
       }
     }
     return null;
-  }
-  
-  void addAttribute(ArrayList<Node> nodes, String attribute) {
-    for (Node node : nodes) {
-      node.attributes.add(attribute);
-    }
-  }
-  
-  void flushAttribute(String attribute) {
-    for (Node node : nodes) {
-      node.remove_attribute(attribute);
-    }
   }
   
   void show() {
@@ -92,7 +81,6 @@ class Link {
 class Node {
   String name;
   ArrayList<Link> links = new ArrayList<Link>();
-  ArrayList<String> attributes = new ArrayList<String>();
   PVector p;
   PVector v;
   Node(PVector p_in, PVector v_in) {
@@ -100,32 +88,7 @@ class Node {
     v = v_in;
     init();
   }
-  
   void init() {
-    attributes.add("normal");
-  }
-  
-  void remove_attribute(String attr) {
-    ArrayList<String> new_attributes = new ArrayList<String>();
-    for (String str : attributes) {
-      if (!str.equals(attr)) {
-        new_attributes.add(str);
-      }
-    }
-    attributes = new_attributes;
-  }
-  
-  void add_attribute(String attr) {
-    attributes.add(attr);
-  }
-  
-  boolean findAttribute(String attr) {
-    for (String str : attributes) {
-      if (attr.equals(str)) {
-        return true;
-      }
-    }
-    return false;
   }
 }
 

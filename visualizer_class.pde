@@ -8,7 +8,6 @@ class Visualizer {
   int size_limit = 1500;
   ArrayList<Node> nodes;
   String method = "FORCE_DIRECTED";
-  String attribute_hide = "normal";
   color wine_red = color(255, 100, 50);
   color deep_blue = color(20, 20, 255);
   color white = color(255, 255, 255);
@@ -29,22 +28,13 @@ class Visualizer {
   
   void show() {
     for (Node node : nodes) {
-      if (!node.findAttribute(attribute_hide)) {
-        continue;
-      }
       for (Link link : node.links) {
-        if (!link.to_node.findAttribute(attribute_hide)) {
-          continue;
-        }
         stroke_color(gray);
         line(node.p.x, node.p.y, link.to_node.p.x, link.to_node.p.y);
         stroke_color(black);
       }
     }
     for (Node node : nodes) {
-      if (!node.findAttribute(attribute_hide)) {
-        continue;
-      }
       stroke_color(black);
       fill_color(black);
       textSize(20);
@@ -58,9 +48,6 @@ class Visualizer {
   void circle() {
     int cnt = 0;
     for (Node node : nodes) {
-      if (!node.findAttribute(attribute_hide)) {
-        continue;
-      }
       cnt++;
     }
     float circle_rad = min_dist / (2 * sin(PI / cnt));
@@ -68,9 +55,6 @@ class Visualizer {
     PVector center = new PVector(width/2, height/2);
     cnt = 0;
     for (Node node : nodes) {
-      if (!node.findAttribute(attribute_hide)) {
-        continue;
-      }
       cnt++;
       node.p.x = center.x + circle_rad * cos(interval * cnt);
       node.p.y = center.y + circle_rad * sin(interval * cnt);
@@ -79,14 +63,8 @@ class Visualizer {
   
   void force_directed() {
     for (Node node1 : nodes) {
-      if(!node1.findAttribute(attribute_hide)) {
-        continue;
-      }
       PVector f = new PVector(0, 0);
       for (Node node2 : nodes) {
-        if(!node2.findAttribute(attribute_hide)) {
-          continue;
-        }
         if ( node1 == node2 ) continue;
         f.add(force(node1, node2));
       }

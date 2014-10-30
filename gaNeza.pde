@@ -32,10 +32,6 @@ void keyPressed() {
     network.visualizer.method = "CIRCLE";
   }else if (key == 'f') {
     network.visualizer.method = "FORCE_DIRECTED";
-  }else if (key == 'a') {
-    network.visualizer.attribute_hide = "country1";
-  }else if (key == 'n') {
-    network.visualizer.attribute_hide = "normal";
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }
