@@ -1,3 +1,5 @@
+import java.util.TreeSet;
+
 class Analyzer {
   ArrayList<Node> nodes;
   Analyzer(ArrayList<Node> nodes_in) {
@@ -23,21 +25,31 @@ class Analyzer {
   
   ArrayList<Node> shortest_path(Node start, Node goal){
     ArrayList<Node> path = new ArrayList<Node>();
-    PriorityQueue queue = new PriorityQueue();
-    queue.push(start, 0);
-    while(queue.empty() == false){
-     PQ next = queue.pop();
-     for(Link link : next.node.links){
-       int weight_sum = next.weight + link.weight;
-       PQ crr_to_node = queue.exist(link.to_node);
-       if(crr_to_node != null && crr_to_node.weight > weight_sum){
-         queue.find(crr_to_node).weight = weight_sum;
-       }else{
-         queue.push(link.to_node, weight_sum);
-       }
+    TreeSet<Node> queue = new TreeSet<Node>();
+    queue.add(start);
+    while(!queue.isEmpty()){
+     Node next = queue.first();
+     for(Link link : next.links){
+      Node neighbor = link.to_node;
+      float weight_sum = next.value + link.weight;
+      if(queue.contains(neighbor)){
+        neighbor.value = neighbor.value < weight_sum ? neighbor.value : weight_sum;
+      }else{
+        neighbor.value = weight_sum;
+        queue.add(neighbor);
+      }
      }
     }
+    clear_node_value();
     return path;
   }
-
+  
+  void clear_node_value(){
+    for(Node node : nodes){
+      node.value = 0;
+    }
+  }
+  
 }
+
+

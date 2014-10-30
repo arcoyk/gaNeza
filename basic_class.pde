@@ -86,6 +86,11 @@ class Link {
   Link(Node from_node_in, Node to_node_in) {
     from_node = from_node_in;
     to_node = to_node_in;
+    init();
+  }
+  
+  void init(){
+    weight = 1;
   }
 }
 
@@ -95,6 +100,7 @@ class Node {
   ArrayList<String> attributes = new ArrayList<String>();
   PVector p;
   PVector v;
+  float value;
   Node(PVector p_in, PVector v_in) {
     p = p_in;
     v = v_in;
@@ -103,6 +109,7 @@ class Node {
   
   void init() {
     attributes.add("normal");
+    value = 0;
   }
   
   void remove_attribute(String attr) {
