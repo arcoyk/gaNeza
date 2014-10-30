@@ -52,13 +52,13 @@ void discription(){
 }
 
 void mouse_select(){
-  TreeSet<Node> near = new TreeSet<Node>();
   for(Node node : network.nodes){
-    node.value = sqrt(pow(mouseX - node.p.x, 2) + pow(mouseY - node.p.y, 2));
-    near.add(node);
+    float distance = sqrt(pow(mouseX - node.p.x, 2) + pow(mouseY - node.p.y, 2));
+    if(distance < 10.0){
+      node.attributes.add("mouse_select");
+      break;
+    }
   }
-  Node nearest = near.first();
-  nearest.attributes.add("mouse_select");
-  network.visualizer.highlight("mouse_select", color(0, 255, 10));
+  network.visualizer.highlight("mouse_select", color(100, 200, 200));
 }
 
