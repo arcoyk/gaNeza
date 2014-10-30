@@ -42,6 +42,8 @@ void keyPressed() {
   }else if (key == 'h') {
     network.visualizer.highlight("country3", color(10, 200, 10, 100));
     network.visualizer.highlight("country2", color(100, 10, 10, 100));
+  }else if (key == 'd') {
+    
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }

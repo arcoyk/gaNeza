@@ -39,6 +39,7 @@ class Analyzer {
         queue.add(neighbor);
       }
      }
+     path.add(next);
     }
     clear_node_value();
     return path;
