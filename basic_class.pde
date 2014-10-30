@@ -82,7 +82,7 @@ class Ganeza {
 class Link {
   Node from_node;
   Node to_node;
-  int weight;
+  int weight = 1;
   Link(Node from_node_in, Node to_node_in) {
     from_node = from_node_in;
     to_node = to_node_in;
@@ -95,6 +95,7 @@ class Node {
   ArrayList<String> attributes = new ArrayList<String>();
   PVector p;
   PVector v;
+  float value = 0;
   Node(PVector p_in, PVector v_in) {
     p = p_in;
     v = v_in;

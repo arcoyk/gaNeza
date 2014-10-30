@@ -2,6 +2,8 @@
 //Copyright(c) 2014 Yui Arco Kita
 //http://bluedog.herokuapp.com/ganeza
 
+import java.util.TreeSet;
+
 Ganeza network;
 void setup() {
   size(1100, 700);
@@ -44,3 +46,14 @@ void keyPressed() {
 void discription(){
   println("PRESS\nc->CIRCLE\nf->FORCE_DIRECTED\na->limit node\nn->unlimit node\nS->save image at "+sketchPath(""));
 }
+
+void mouse_select(){
+  TreeSet<Node> near = new TreeSet<Node>();
+  for(Node node : network.nodes){
+    node.value = sqrt(pow(mouseX - node.p.x, 2) + pow(mouseY - node.p.y, 2));
+    near.add(node);
+  }
+  Node nearest = near.first();
+  nearest.attributes.add("mouse_select");
+}
+
