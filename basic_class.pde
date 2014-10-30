@@ -89,7 +89,7 @@ class Link {
   }
 }
 
-class Node {
+class Node implements Comparable{
   String name;
   ArrayList<Link> links = new ArrayList<Link>();
   ArrayList<String> attributes = new ArrayList<String>();
@@ -127,6 +127,11 @@ class Node {
       }
     }
     return false;
+  }
+  
+  int compareTo(Object other){
+    Node other_node = (Node)other;
+    return (int)(value - other_node.value);
   }
 }
 

@@ -19,6 +19,7 @@ void draw() {
 
 void mousePressed() {
   network.mousePressed();
+  mouse_select();
 }
 
 void mouseDragged() {
@@ -58,5 +59,6 @@ void mouse_select(){
   }
   Node nearest = near.first();
   nearest.attributes.add("mouse_select");
+  network.visualizer.highlight("mouse_select", color(0, 255, 10));
 }
 
