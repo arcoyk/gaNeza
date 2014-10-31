@@ -8,6 +8,7 @@ Ganeza network;
 void setup() {
   size(1100, 700);
   network = new Ganeza("north_america_name.json");
+  network.visualizer.c = color(0, 0, 0, 50);
   network.visualizer.method = "FORCE_DIRECTED";
   discription();
 }
@@ -35,17 +36,14 @@ void keyPressed() {
     network.visualizer.method = "CIRCLE";
   }else if (key == 'f') {
     network.visualizer.method = "FORCE_DIRECTED";
-  }else if (key == 'a') {
-    network.visualizer.attribute_hide = "country1";
-  }else if (key == 'n') {
-    network.visualizer.attribute_hide = "normal";
-  }else if (key == 'h') {
-    network.visualizer.highlight("country3", color(10, 200, 10, 100));
-    network.visualizer.highlight("country2", color(100, 10, 10, 100));
-  }else if (key == 'd') {
-    
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
+  }else if (key == 's') {
+    ArrayList<Node> sub_nodes = new ArrayList<Node>();
+    for(Node node : network.nodes){
+      if(node.links.size() < 2) sub_nodes.add(node);
+    }
+    network.create_subnetwork(sub_nodes, "few links");
   }
 }
 
@@ -57,10 +55,8 @@ void mouse_select(){
   for(Node node : network.nodes){
     float distance = sqrt(pow(mouseX - node.p.x, 2) + pow(mouseY - node.p.y, 2));
     if(distance < 10.0){
-      node.attributes.add("mouse_select");
       break;
     }
   }
-  network.visualizer.highlight("mouse_select", color(100, 200, 200));
 }
 

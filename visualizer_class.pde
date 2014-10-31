@@ -10,13 +10,8 @@ class Visualizer {
   int size_limit = 1500;
   ArrayList<Node> nodes;
   String method = "FORCE_DIRECTED";
-  HashMap<String, Integer> attribute_color = new HashMap<String, Integer>();
-  String attribute_hide = "normal";
-  color wine_red = color(255, 100, 50);
-  color deep_blue = color(20, 20, 255);
-  color white = color(255, 255, 255);
-  color gray = color(200, 200, 200);
-  color black = color(0, 0, 0);
+  color c = color(0);
+  
   Visualizer(ArrayList<Node> in_nodes) {
     nodes = in_nodes;
   }
@@ -27,44 +22,29 @@ class Visualizer {
     }else if (method == "CIRCLE") {
       circle();
     }
+    fill(c);
+    stroke(c);
     show();
+    fill(0);
+    stroke(0);
   }
   
   void show() {
     for (Node node : nodes) {
-      if (!node.findAttribute(attribute_hide)) {
-        continue;
-      }
       for (Link link : node.links) {
-        if (!link.to_node.findAttribute(attribute_hide)) {
-          continue;
-        }
-        stroke_color(gray);
         line(node.p.x, node.p.y, link.to_node.p.x, link.to_node.p.y);
-        stroke_color(black);
       }
     }
     for (Node node : nodes) {
-      if (!node.findAttribute(attribute_hide)) {
-        continue;
-      }
-      stroke_color(black);
-      fill_color(black);
       textSize(20);
       ellipse(node.p.x, node.p.y, 10, 10);
       text(node.name, node.p.x, node.p.y - 5);
-      stroke_color(white);
-      fill_color(white);
-      show_highlight();
     }
   }
   
   void circle() {
     int cnt = 0;
     for (Node node : nodes) {
-      if (!node.findAttribute(attribute_hide)) {
-        continue;
-      }
       cnt++;
     }
     float circle_rad = min_dist / (2 * sin(PI / cnt));
@@ -72,9 +52,6 @@ class Visualizer {
     PVector center = new PVector(width/2, height/2);
     cnt = 0;
     for (Node node : nodes) {
-      if (!node.findAttribute(attribute_hide)) {
-        continue;
-      }
       cnt++;
       node.p.x = center.x + circle_rad * cos(interval * cnt);
       node.p.y = center.y + circle_rad * sin(interval * cnt);
@@ -83,14 +60,8 @@ class Visualizer {
   
   void force_directed() {
     for (Node node1 : nodes) {
-      if(!node1.findAttribute(attribute_hide)) {
-        continue;
-      }
       PVector f = new PVector(0, 0);
       for (Node node2 : nodes) {
-        if(!node2.findAttribute(attribute_hide)) {
-          continue;
-        }
         if ( node1 == node2 ) continue;
         f.add(force(node1, node2));
       }
@@ -102,7 +73,7 @@ class Visualizer {
       node1.p.y += node1.v.y;
     }
   }
-
+  
   PVector force(Node n1, Node n2) {
     PVector f = new PVector();
     float F = C / pow(PVector.dist(n1.p, n2.p), 2);
@@ -130,33 +101,5 @@ class Visualizer {
       }
     }
     return false;
-  }
-   
-  void stroke_color(color c) {
-    stroke(red(c), green(c), blue(c), 100);
-  }
-  
-  void fill_color(color c) {
-    fill(red(c), green(c), blue(c), 200);
-  }
-  
-  void highlight(String attribute, color c){
-    attribute_color.put(attribute, c);
-  }
-  
-  void show_highlight(){
-    for (Node node : nodes) {
-      if (!node.findAttribute(attribute_hide)) {
-        continue;
-      }
-      for(Map.Entry e : attribute_color.entrySet()){
-        String attribute = (String)e.getKey();
-        if(node.findAttribute(attribute)){
-          fill_color((color)(Integer)e.getValue());
-          ellipse(node.p.x, node.p.y, 10, 10);
-        }
-      }
-    }
-    fill_color(white);
   }
 }

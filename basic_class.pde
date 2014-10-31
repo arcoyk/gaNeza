@@ -1,8 +1,14 @@
 class Ganeza {
+  String name = "non-name";
   ArrayList<Node> nodes = new ArrayList<Node>();
   View view = new View();
   Visualizer visualizer = new Visualizer(nodes);
   Analyzer analyzer = new Analyzer(nodes);
+  ArrayList<Ganeza> subnetwork_list = new ArrayList<Ganeza>();
+  
+  Ganeza(){
+  }
+  
   Ganeza(String network_json) {
     init(network_json);
   }
@@ -15,13 +21,12 @@ class Ganeza {
       JSONObject node_data = node_data_array.getJSONObject(i);
       Node node = new Node(new PVector(random(width), random(height)), new PVector(0, 0));
       node.name = node_data.getString("node_name");
-      String[] attrs = node_data.getJSONArray("attributes").getStringArray();
-      for (int m = 0; m < attrs.length; m++) {
-        node.attributes.add(attrs[m]);
-      }
+//      String[] attrs = node_data.getJSONArray("attributes").getStringArray();
+//      for (int m = 0; m < attrs.length; m++) {
+//        node.attributes.add(attrs[m]);
+//      }
       nodes.add(node);
     }
-    
     //links
     for (Node from_node : nodes) {
       JSONObject node_data = node_data_array.getJSONObject(nodes.indexOf(from_node));
@@ -47,16 +52,29 @@ class Ganeza {
     return null;
   }
   
-  void addAttribute(ArrayList<Node> nodes, String attribute) {
-    for (Node node : nodes) {
-      node.attributes.add(attribute);
-    }
+  void create_subnetwork(ArrayList<Node> sub_nodes, String name){
+    Ganeza subnetwork = new Ganeza();
+    subnetwork.nodes = sub_nodes;
+    subnetwork.link_rebind();
+    subnetwork.visualizer = new Visualizer(sub_nodes);
+    subnetwork.name = name;
+    subnetwork.visualizer.c = color(0, 0, 255, 100);
+    subnetwork_list.add(subnetwork);
   }
   
-  void flushAttribute(String attribute) {
-    for (Node node : nodes) {
-      node.remove_attribute(attribute);
+  void link_rebind(){
+    ArrayList<Node> new_nodes = new ArrayList<Node>();
+    for(Node node : nodes){
+      ArrayList<Link> new_links = new ArrayList<Link>();
+      for(Link link : node.links){
+        if(nodes.contains(link.to_node)){
+          new_nodes.add(link.to_node);
+          new_links.add(link);
+        }
+      }
+      node.links = new_links;
     }
+    nodes = new_nodes;
   }
   
   void show() {
@@ -64,6 +82,9 @@ class Ganeza {
     scale(view.scale);
     translate(view.view_point.x, view.view_point.y);
     visualizer.visualize();
+    for(Ganeza subnetwork : subnetwork_list){
+      subnetwork.visualizer.visualize();
+    }
   }
   
   void mousePressed() {
@@ -83,6 +104,7 @@ class Link {
   Node from_node;
   Node to_node;
   int weight = 1;
+
   Link(Node from_node_in, Node to_node_in) {
     from_node = from_node_in;
     to_node = to_node_in;
@@ -97,10 +119,10 @@ class Link {
 class Node implements Comparable{
   String name;
   ArrayList<Link> links = new ArrayList<Link>();
-  ArrayList<String> attributes = new ArrayList<String>();
   PVector p;
   PVector v;
   float value = 0;
+  
   Node(PVector p_in, PVector v_in) {
     p = p_in;
     v = v_in;
@@ -108,31 +130,6 @@ class Node implements Comparable{
   }
   
   void init() {
-    attributes.add("normal");
-    value = 0;
-  }
-  
-  void remove_attribute(String attr) {
-    ArrayList<String> new_attributes = new ArrayList<String>();
-    for (String str : attributes) {
-      if (!str.equals(attr)) {
-        new_attributes.add(str);
-      }
-    }
-    attributes = new_attributes;
-  }
-  
-  void add_attribute(String attr) {
-    attributes.add(attr);
-  }
-  
-  boolean findAttribute(String attr) {
-    for (String str : attributes) {
-      if (attr.equals(str)) {
-        return true;
-      }
-    }
-    return false;
   }
   
   int compareTo(Object other){

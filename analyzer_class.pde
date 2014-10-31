@@ -1,6 +1,7 @@
 import java.util.TreeSet;
 
 class Analyzer {
+  
   ArrayList<Node> nodes;
   Analyzer(ArrayList<Node> nodes_in) {
     nodes = nodes_in;
@@ -22,7 +23,7 @@ class Analyzer {
     }
     return false;
   }
-  
+
   ArrayList<Node> shortest_path(Node start, Node goal){
     ArrayList<Node> path = new ArrayList<Node>();
     TreeSet<Node> queue = new TreeSet<Node>();
@@ -50,7 +51,6 @@ class Analyzer {
       node.value = 0;
     }
   }
-  
 }
 
 
