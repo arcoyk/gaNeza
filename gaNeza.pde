@@ -6,7 +6,7 @@ Ganeza network;
 void setup() {
   size(1100, 700);
   network = new Ganeza("north_america_name.json");
-  network.visualizer.c = color(255, 0, 0, 100);
+  network.visualizer.c = color(0, 0, 0, 50);
   network.visualizer.method = "FORCE_DIRECTED";
   discription();
 }
