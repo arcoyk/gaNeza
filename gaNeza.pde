@@ -6,6 +6,7 @@ Ganeza network;
 void setup() {
   size(1100, 700);
   network = new Ganeza("north_america_name.json");
+  network.visualizer.c = color(255, 0, 0, 100);
   network.visualizer.method = "FORCE_DIRECTED";
   discription();
 }
@@ -34,6 +35,12 @@ void keyPressed() {
     network.visualizer.method = "FORCE_DIRECTED";
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
+  }else if (key == 's') {
+    ArrayList<Node> sub_nodes = new ArrayList<Node>();
+    for(Node node : network.nodes){
+      if(node.links.size() < 2) sub_nodes.add(node);
+    }
+    network.create_subnetwork(sub_nodes, "few links");
   }
 }
 

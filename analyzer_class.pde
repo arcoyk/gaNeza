@@ -1,4 +1,5 @@
 class Analyzer {
+  
   ArrayList<Node> nodes;
   Analyzer(ArrayList<Node> nodes_in) {
     nodes = nodes_in;
@@ -20,5 +21,4 @@ class Analyzer {
     }
     return false;
   }
-
 }

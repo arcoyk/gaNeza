@@ -8,11 +8,8 @@ class Visualizer {
   int size_limit = 1500;
   ArrayList<Node> nodes;
   String method = "FORCE_DIRECTED";
-  color wine_red = color(255, 100, 50);
-  color deep_blue = color(20, 20, 255);
-  color white = color(255, 255, 255);
-  color gray = color(200, 200, 200);
-  color black = color(0, 0, 0);
+  color c = color(0);
+  
   Visualizer(ArrayList<Node> in_nodes) {
     nodes = in_nodes;
   }
@@ -23,25 +20,23 @@ class Visualizer {
     }else if (method == "CIRCLE") {
       circle();
     }
+    fill(c);
+    stroke(c);
     show();
+    fill(0);
+    stroke(0);
   }
   
   void show() {
     for (Node node : nodes) {
       for (Link link : node.links) {
-        stroke_color(gray);
         line(node.p.x, node.p.y, link.to_node.p.x, link.to_node.p.y);
-        stroke_color(black);
       }
     }
     for (Node node : nodes) {
-      stroke_color(black);
-      fill_color(black);
       textSize(20);
       ellipse(node.p.x, node.p.y, 10, 10);
       text(node.name, node.p.x, node.p.y - 5);
-      stroke_color(white);
-      fill_color(white);
     }
   }
   
@@ -76,7 +71,7 @@ class Visualizer {
       node1.p.y += node1.v.y;
     }
   }
-
+  
   PVector force(Node n1, Node n2) {
     PVector f = new PVector();
     float F = C / pow(PVector.dist(n1.p, n2.p), 2);
@@ -104,13 +99,5 @@ class Visualizer {
       }
     }
     return false;
-  }
-   
-  void stroke_color(color c) {
-    stroke(red(c), green(c), blue(c), 100);
-  }
-  
-  void fill_color(color c) {
-    fill(red(c), green(c), blue(c), 200);
   }
 }

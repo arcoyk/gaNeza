@@ -1,9 +1,14 @@
 class Ganeza {
+  String name = "non-name";
   ArrayList<Node> nodes = new ArrayList<Node>();
   View view = new View();
   Visualizer visualizer = new Visualizer(nodes);
   Analyzer analyzer = new Analyzer(nodes);
-  HashMap<String, ArrayList<Node>> subnetworks = new HashMap<String, ArrayList<Node>>();
+  ArrayList<Ganeza> subnetwork_list = new ArrayList<Ganeza>();
+  
+  Ganeza(){
+  }
+  
   Ganeza(String network_json) {
     init(network_json);
   }
@@ -22,7 +27,6 @@ class Ganeza {
 //      }
       nodes.add(node);
     }
-    
     //links
     for (Node from_node : nodes) {
       JSONObject node_data = node_data_array.getJSONObject(nodes.indexOf(from_node));
@@ -48,11 +52,23 @@ class Ganeza {
     return null;
   }
   
+  void create_subnetwork(ArrayList<Node> sub_nodes, String name){
+    Ganeza subnetwork = new Ganeza();
+    subnetwork.nodes = sub_nodes;
+    subnetwork.visualizer = new Visualizer(sub_nodes);
+    subnetwork.name = name;
+    subnetwork.visualizer.c = color(0, 0, 255, 100);
+    subnetwork_list.add(subnetwork);
+  }
+  
   void show() {
     translate(width / 2 - width * view.scale / 2, height / 2 - height * view.scale / 2);
     scale(view.scale);
     translate(view.view_point.x, view.view_point.y);
     visualizer.visualize();
+    for(Ganeza subnetwork : subnetwork_list){
+      subnetwork.visualizer.visualize();
+    }
   }
   
   void mousePressed() {
@@ -72,6 +88,7 @@ class Link {
   Node from_node;
   Node to_node;
   int weight;
+  
   Link(Node from_node_in, Node to_node_in) {
     from_node = from_node_in;
     to_node = to_node_in;
@@ -83,11 +100,13 @@ class Node {
   ArrayList<Link> links = new ArrayList<Link>();
   PVector p;
   PVector v;
+  
   Node(PVector p_in, PVector v_in) {
     p = p_in;
     v = v_in;
     init();
   }
+  
   void init() {
   }
 }
