@@ -112,7 +112,6 @@ class Link {
   }
   
   void init(){
-    weight = 1;
   }
 }
 
@@ -167,3 +166,5 @@ class View {
     }
   }
 }
+
+

@@ -23,13 +23,13 @@ class Analyzer {
     }
     return false;
   }
-
+    
   ArrayList<Node> shortest_path(Node start, Node goal){
     ArrayList<Node> path = new ArrayList<Node>();
     TreeSet<Node> queue = new TreeSet<Node>();
     queue.add(start);
     while(!queue.isEmpty()){
-     Node next = queue.first();
+     Node next = queue.pollFirst();
      for(Link link : next.links){
       Node neighbor = link.to_node;
       float weight_sum = next.value + link.weight;
@@ -41,6 +41,9 @@ class Analyzer {
       }
      }
      path.add(next);
+     if(next == goal){
+       break;
+     }
     }
     clear_node_value();
     return path;

@@ -33,6 +33,9 @@ class Visualizer {
     for (Node node : nodes) {
       for (Link link : node.links) {
         line(node.p.x, node.p.y, link.to_node.p.x, link.to_node.p.y);
+        strokeWeight(2);
+        line(node.p.x, node.p.y, node.p.x + (link.to_node.p.x - node.p.x) / 4, node.p.y + (link.to_node.p.y - node.p.y) / 4);
+        strokeWeight(1);
       }
     }
     for (Node node : nodes) {
