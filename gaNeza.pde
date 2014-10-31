@@ -38,8 +38,8 @@ void keyPressed() {
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }else if (key == 's') {
-    Node start_node = network.get_node("Bell");
-    Node goal_node = network.get_node("Curz");
+    Node start_node = network.get_node("White");
+    Node goal_node = network.get_node("Jones");
     ArrayList<Node> path_nodes = network.analyzer.shortest_path(start_node, goal_node);
     network.create_subnetwork(path_nodes, "path");
   }

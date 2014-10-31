@@ -41,11 +41,12 @@ class Analyzer {
       }
      }
      path.add(next);
-     if(next == goal){
-       break;
-     }
     }
     clear_node_value();
+    if(!path.contains(goal)){
+      path.clear();
+      return path;
+    }
     return path;
   }
   
