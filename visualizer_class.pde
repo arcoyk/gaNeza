@@ -23,6 +23,8 @@ class Visualizer {
       force_directed();
     }else if (method == "CIRCLE") {
       circle();
+    }else if (method == "LINEUP") {
+      line_up();
     }
     show();
   }
@@ -52,6 +54,16 @@ class Visualizer {
       text(node.name, node.p.x, node.p.y - 5);
       stroke_color(white);
       fill_color(white);
+    }
+  }
+  
+  void line_up() {
+    int interval = min_dist * 3;
+    int div = (int)sqrt(nodes.size());
+    for(int i=0; i<nodes.size(); i++){
+      Node node = nodes.get(i);
+      node.p.x = interval * (i % div);
+      node.p.y = interval * (int)(i / div);
     }
   }
   
