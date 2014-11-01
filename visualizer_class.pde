@@ -21,6 +21,8 @@ class Visualizer {
       force_directed();
     }else if (method == "CIRCLE") {
       circle();
+    }else if (method == "LINEUP") {
+      line_up();
     }
     fill(c);
     stroke(c);
@@ -42,6 +44,16 @@ class Visualizer {
       textSize(20);
       ellipse(node.p.x, node.p.y, 10, 10);
       text(node.name, node.p.x, node.p.y - 5);
+    }
+  }
+  
+  void line_up() {
+    int interval = min_dist * 3;
+    int div = (int)sqrt(nodes.size());
+    for(int i=0; i<nodes.size(); i++){
+      Node node = nodes.get(i);
+      node.p.x = interval * (i % div);
+      node.p.y = interval * (int)(i / div);
     }
   }
   

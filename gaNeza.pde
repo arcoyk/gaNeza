@@ -35,6 +35,8 @@ void keyPressed() {
     network.visualizer.method = "CIRCLE";
   }else if (key == 'f') {
     network.visualizer.method = "FORCE_DIRECTED";
+  }else if (key == 'l') {
+    network.visualizer.method = "LINEUP";
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }else if (key == 's') {
