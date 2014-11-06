@@ -1,0 +1,35 @@
+{
+    "nodes": [
+
+{
+"node_name":"A",
+"link_to": ["B","C"],
+"attributes":[]
+},
+{
+"node_name":"B",
+"link_to": ["C","D"],
+"attributes":[]
+},
+{
+"node_name":"C",
+"link_to": ["E","D"],
+"attributes":[]
+},
+{
+"node_name":"D",
+"link_to": ["F","E"],
+"attributes":[]
+},
+{
+"node_name":"E",
+"link_to": ["F"],
+"attributes":[]
+},
+{
+"node_name":"F",
+"link_to": [],
+"attributes":[]
+},
+    ]
+}
