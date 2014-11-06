@@ -7,7 +7,7 @@ import java.util.TreeSet;
 Ganeza network;
 void setup() {
   size(1100, 700);
-  network = new Ganeza("north_america_name.json");
+  network = new Ganeza("sample2.json");
   network.visualizer.c = color(0, 100, 0, 100);
   network.visualizer.method = "FORCE_DIRECTED";
   discription();
@@ -40,8 +40,8 @@ void keyPressed() {
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }else if (key == 's') {
-    Node start_node = network.get_node("Reed");
-    Node goal_node = network.get_node("Ross");
+    Node start_node = network.get_node("D");
+    Node goal_node = network.get_node("C");
     println(start_node.name+","+goal_node.name);
     ArrayList<Node> path_nodes = network.analyzer.shortest_path(start_node, goal_node);
     println(path_nodes.size());

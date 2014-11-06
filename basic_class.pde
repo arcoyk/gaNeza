@@ -40,8 +40,8 @@ class Ganeza {
         Link link = new Link(from_node, to_node);
         from_node.links.add(link);
         //omnidirectional
-        //Link reversal = new Link(to_node, from_node);
-        //to_node.links.add(reversal);
+        Link reversal = new Link(to_node, from_node);
+        to_node.links.add(reversal);
       }
     }
   }
