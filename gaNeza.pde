@@ -7,72 +7,10 @@ import java.util.TreeSet;
 Ganeza network;
 void setup() {
   size(1100, 700);
-  network = new Ganeza("sample2.json");
+  network = new Ganeza("north_america_name.json");
   network.visualizer.c = color(0, 100, 0, 100);
   network.visualizer.method = "FORCE_DIRECTED";
   discription();
-  
-  for(Node node1 : network.nodes){
-    for(Node node2 : network.nodes){
-      if( network.analyzer.is_connected(node1, node2) ){
-        if( node1.name.equals("A") && node2.name.equals("B") ){
-          Link link = getLink(node1, node2);
-          link.weight = 4;
-          link = getLink(node2, node1);
-          link.weight = 4;
-        }
-        if( node1.name.equals("A") && node2.name.equals("C") ){
-          Link link = getLink(node1, node2);
-          link.weight = 2;
-          link = getLink(node2, node1);
-          link.weight = 2;
-        }
-        if( node1.name.equals("B") && node2.name.equals("C") ){
-          Link link = getLink(node1, node2);
-          link.weight = 1;
-          link = getLink(node2, node1);
-          link.weight = 1;
-        }
-        if( node1.name.equals("B") && node2.name.equals("D") ){
-          Link link = getLink(node1, node2);
-          link.weight = 5;
-          link = getLink(node2, node1);
-          link.weight = 5;
-        }
-        if( node1.name.equals("C") && node2.name.equals("D") ){
-          Link link = getLink(node1, node2);
-          link.weight = 8;
-          link = getLink(node2, node1);
-          link.weight =8;
-        }
-        if( node1.name.equals("C") && node2.name.equals("E") ){
-          Link link = getLink(node1, node2);
-          link.weight = 10;
-          link = getLink(node2, node1);
-          link.weight = 10;
-        }
-        if( node1.name.equals("D") && node2.name.equals("E") ){
-          Link link = getLink(node1, node2);
-          link.weight = 2;
-          link = getLink(node2, node1);
-          link.weight = 2;
-        }
-        if( node1.name.equals("D") && node2.name.equals("F") ){
-          Link link = getLink(node1, node2);
-          link.weight = 6;
-          link = getLink(node2, node1);
-          link.weight = 6;
-        }
-        if( node1.name.equals("E") && node2.name.equals("F") ){
-          Link link = getLink(node1, node2);
-          link.weight = 3;
-          link = getLink(node2, node1);
-          link.weight = 3;
-        }
-      }
-    }
-  }
-  
 }
 
 Link getLink(Node node1, Node node2){
@@ -87,14 +25,6 @@ Link getLink(Node node1, Node node2){
 void draw() {
   background(255);
   network.show();
-  for(Node node : network.nodes){
-    for(Link link : node.links){
-      PVector from_point = node.p;
-      PVector to_point = link.to_node.p;
-      PVector middle_point = new PVector( (from_point.x + to_point.x) / 2.0, (from_point.y + to_point.y) / 2.0 );
-      text(link.weight, middle_point.x, middle_point.y);
-    }
-  }
 }
 
 void mousePressed() {
@@ -120,12 +50,14 @@ void keyPressed() {
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }else if (key == 's') {
-    Node start_node = network.get_node("A");
-    Node goal_node = network.get_node("F");
+    Node start_node = network.get_node("White");
+    Node goal_node = network.get_node("Thompson");
     path_nodes = network.analyzer.shortest_path(start_node, goal_node);
     int cnt = 0;
+    println(path_nodes.size());
     for(int i = 0; i < path_nodes.size() - 1; i++){
       Node node = path_nodes.get(i);
+      println(node.name);
       Link link = getLink(path_nodes.get(i), path_nodes.get(i + 1));
       println(link.from_node.name + " -> " + link.to_node.name + " " + link.weight);
       cnt += link.weight;  

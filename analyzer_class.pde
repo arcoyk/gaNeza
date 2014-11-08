@@ -34,6 +34,10 @@ class Analyzer {
         break;
       }
      Node next = queue.pollFirst();
+     if(next == goal){
+       path.add(goal);
+       break;
+     }
      for(Link link : next.links){
       Node neighbor = link.to_node;
       if(path.contains(neighbor)){
@@ -50,10 +54,6 @@ class Analyzer {
         queue.add(neighbor);
         if(!path.contains(next)) path.add(next);
       }
-     }
-     if(next == goal){
-       path.add(goal);
-       break;
      }
     }
     clear_node_value();
