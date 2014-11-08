@@ -26,12 +26,10 @@ class Analyzer {
     
   ArrayList<Node> shortest_path(Node start, Node goal){
     ArrayList<Node> path = new ArrayList<Node>();
-    ArrayList<Node> used = new ArrayList<Node>();
     TreeSet<Node> queue = new TreeSet<Node>();
     int cnt = 0;
     queue.add(start);
     while(!queue.isEmpty()){
-      println(queue.first().name);
       if(cnt++ > 100){
         break;
       }
@@ -43,14 +41,18 @@ class Analyzer {
       }
       float weight_sum = next.value + link.weight;
       if(queue.contains(neighbor)){
-        neighbor.value = neighbor.value < weight_sum ? neighbor.value : weight_sum;
-      }else{
+        if(weight_sum < neighbor.value){
+          neighbor.value = weight_sum;
+          if(!path.contains(next)) path.add(next);
+        }
+      }else {
         neighbor.value = weight_sum;
         queue.add(neighbor);
+        if(!path.contains(next)) path.add(next);
       }
      }
-     path.add(next);
      if(next == goal){
+       path.add(goal);
        break;
      }
     }
