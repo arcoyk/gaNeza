@@ -50,14 +50,14 @@ void keyPressed() {
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }else if (key == 's') {
-    Node start_node = network.get_node("White");
-    Node goal_node = network.get_node("Thompson");
+    Node start_node = network.nodes.get((int)random(network.nodes.size()-1));
+    Node goal_node = network.nodes.get((int)random(network.nodes.size()-1));
+    println(start_node.name);
+    println(goal_node.name);
     path_nodes = network.analyzer.shortest_path(start_node, goal_node);
     int cnt = 0;
-    println(path_nodes.size());
     for(int i = 0; i < path_nodes.size() - 1; i++){
       Node node = path_nodes.get(i);
-      println(node.name);
       Link link = getLink(path_nodes.get(i), path_nodes.get(i + 1));
       println(link.from_node.name + " -> " + link.to_node.name + " " + link.weight);
       cnt += link.weight;  
