@@ -8,8 +8,8 @@ void setup() {
   if (frame != null) {
     frame.setResizable(true);
   }
-  network = new Ganeza("recipe_ethnic_american.json");  
-  network.visualizer.c = color(0, 100, 0, 100);
+  network = new Ganeza("north_america_name.json");
+  network.visualizer.c = color(100, 0, 100, 50);
   network.visualizer.method = "FORCE_DIRECTED";
   discription();
 }
