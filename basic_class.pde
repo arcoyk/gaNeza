@@ -21,10 +21,6 @@ class Ganeza {
       JSONObject node_data = node_data_array.getJSONObject(i);
       Node node = new Node(new PVector(random(width), random(height)), new PVector(0, 0));
       node.name = node_data.getString("node_name");
-//      String[] attrs = node_data.getJSONArray("attributes").getStringArray();
-//      for (int m = 0; m < attrs.length; m++) {
-//        node.attributes.add(attrs[m]);
-//      }
       nodes.add(node);
     }
     //links
@@ -39,9 +35,6 @@ class Ganeza {
         }
         Link link = new Link(from_node, to_node);
         from_node.links.add(link);
-        //omnidirectional
-        Link reversal = new Link(to_node, from_node);
-        to_node.links.add(reversal);
       }
     }
   }
