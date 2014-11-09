@@ -9,7 +9,7 @@ void setup() {
     frame.setResizable(true);
   }
   network = new Ganeza("north_america_name.json");
-  network.visualizer.c = color(0, 100, 0, 100);
+  network.visualizer.c = color(0, 0, 0, 50);
   network.visualizer.method = "FORCE_DIRECTED";
   discription();
 }
