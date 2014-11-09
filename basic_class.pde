@@ -48,13 +48,13 @@ class Ganeza {
     return null;
   }
   
-  void create_subnetwork(ArrayList<Node> sub_nodes, String name){
+  void create_subnetwork(ArrayList<Node> sub_nodes, String name, color c) {
     Ganeza subnetwork = new Ganeza();
     subnetwork.nodes = sub_nodes;
     subnetwork.link_rebind();
     subnetwork.visualizer = new Visualizer(sub_nodes);
     subnetwork.name = name;
-    subnetwork.visualizer.c = color(0, 0, 255, 100);
+    subnetwork.visualizer.c = c;
     subnetwork_list.add(subnetwork);
   }
   
