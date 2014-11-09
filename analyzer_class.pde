@@ -1,7 +1,6 @@
 import java.util.PriorityQueue;
 
 class Analyzer {
-  
   ArrayList<Node> nodes;
   Analyzer(ArrayList<Node> nodes_in) {
     nodes = nodes_in;
@@ -16,7 +15,7 @@ class Analyzer {
         return true;
       }
     }
-    for(Link link : node2.links) {
+    for (Link link : node2.links) {
       if (link.to_node == node1) {
         return true;
       }
@@ -24,24 +23,24 @@ class Analyzer {
     return false;
   }
     
-  float shortest_distance(Node start, Node goal){
+  float shortest_distance(Node start, Node goal) {
     ArrayList<Node> used = new ArrayList<Node>();
     PriorityQueue<Node> queue = new PriorityQueue<Node>();
     queue.add(start);
-    while(!queue.isEmpty()){
+    while (!queue.isEmpty()) {
       Node next = queue.poll();
       used.add(next);
-      if(next == goal){
+      if (next == goal) {
         break;
       }
-      for(Link link : next.links){
+      for (Link link : next.links) {
         Node neighbor = link.to_node;
-        if(used.contains(neighbor)){
+        if (used.contains(neighbor)) {
           continue;
         }
         float weight_sum = next.value + link.weight;
-        if(queue.contains(neighbor)){
-          if(weight_sum < neighbor.value){
+        if (queue.contains(neighbor)) {
+          if (weight_sum < neighbor.value) {
             neighbor.value = weight_sum;
           }
         }else {
@@ -55,8 +54,8 @@ class Analyzer {
     return result;
   }
   
-  void clear_node_value(){
-    for(Node node : nodes){
+  void clear_node_value() {
+    for (Node node : nodes) {
       node.value = 0;
     }
   }

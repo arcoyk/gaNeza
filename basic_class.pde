@@ -6,7 +6,7 @@ class Ganeza {
   Analyzer analyzer = new Analyzer(nodes);
   ArrayList<Ganeza> subnetwork_list = new ArrayList<Ganeza>();
   
-  Ganeza(){
+  Ganeza() {
   }
   
   Ganeza(String network_json) {

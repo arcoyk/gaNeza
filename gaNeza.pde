@@ -5,15 +5,18 @@
 Ganeza network;
 void setup() {
   size(1100, 700);
-  network = new Ganeza("recipe_ethnic_american.json");
+  if (frame != null) {
+    frame.setResizable(true);
+  }
+  network = new Ganeza("recipe_ethnic_american.json");  
   network.visualizer.c = color(0, 100, 0, 100);
   network.visualizer.method = "FORCE_DIRECTED";
   discription();
 }
 
-Link getLink(Node node1, Node node2){
-  for(Link link : node1.links){
-    if(link.to_node == node2){
+Link getLink(Node node1, Node node2) {
+  for (Link link : node1.links) {
+    if (link.to_node == node2) {
       return link;
     }
   }
@@ -56,14 +59,14 @@ void keyPressed() {
   }
 }
 
-void discription(){
+void discription() {
   println("PRESS\nc->CIRCLE\nf->FORCE_DIRECTED\nS->save image at "+sketchPath(""));
 }
 
-void mouse_select(){
-  for(Node node : network.nodes){
+void mouse_select() {
+  for (Node node : network.nodes) {
     float distance = sqrt(pow(mouseX - node.p.x, 2) + pow(mouseY - node.p.y, 2));
-    if(distance < 10.0){
+    if (distance < 10.0) {
       break;
     }
   }
