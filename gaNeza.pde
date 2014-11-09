@@ -2,8 +2,6 @@
 //Copyright(c) 2014 Yui Arco Kita
 //http://bluedog.herokuapp.com/ganeza
 
-import java.util.TreeSet;
-
 Ganeza network;
 void setup() {
   size(1100, 700);
@@ -39,7 +37,6 @@ void mouseWheel(MouseEvent event){
   network.mouseWheel(event);
 }
 
-ArrayList<Node> path_nodes = new ArrayList<Node>();
 void keyPressed() {
   if (key == 'c') {
     network.visualizer.method = "CIRCLE";
@@ -54,15 +51,8 @@ void keyPressed() {
     Node goal_node = network.nodes.get((int)random(network.nodes.size()-1));
     println(start_node.name);
     println(goal_node.name);
-    path_nodes = network.analyzer.shortest_path(start_node, goal_node);
-    int cnt = 0;
-    for(int i = 0; i < path_nodes.size() - 1; i++){
-      Node node = path_nodes.get(i);
-      Link link = getLink(path_nodes.get(i), path_nodes.get(i + 1));
-      println(link.from_node.name + " -> " + link.to_node.name + " " + link.weight);
-      cnt += link.weight;  
-    }
-    println("sum : " + cnt);
+    float shortest_distance = network.analyzer.shortest_distance(start_node, goal_node);
+    println(shortest_distance);
   }
 }
 

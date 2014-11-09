@@ -1,4 +1,4 @@
-import java.util.TreeSet;
+import java.util.PriorityQueue;
 
 class Analyzer {
   
@@ -24,40 +24,35 @@ class Analyzer {
     return false;
   }
     
-  ArrayList<Node> shortest_path(Node start, Node goal){
-    ArrayList<Node> path = new ArrayList<Node>();
-    TreeSet<Node> queue = new TreeSet<Node>();
-    int cnt = 0;
+  float shortest_distance(Node start, Node goal){
+    ArrayList<Node> used = new ArrayList<Node>();
+    PriorityQueue<Node> queue = new PriorityQueue<Node>();
     queue.add(start);
     while(!queue.isEmpty()){
-      if(cnt++ > 100){
+      Node next = queue.poll();
+      used.add(next);
+      if(next == goal){
         break;
       }
-     Node next = queue.pollFirst();
-     if(next == goal){
-       path.add(goal);
-       break;
-     }
-     for(Link link : next.links){
-      Node neighbor = link.to_node;
-      if(path.contains(neighbor)){
-        continue;
-      }
-      float weight_sum = next.value + link.weight;
-      if(queue.contains(neighbor)){
-        if(weight_sum < neighbor.value){
-          neighbor.value = weight_sum;
-          if(!path.contains(next)) path.add(next);
+      for(Link link : next.links){
+        Node neighbor = link.to_node;
+        if(used.contains(neighbor)){
+          continue;
         }
-      }else {
-        neighbor.value = weight_sum;
-        queue.add(neighbor);
-        if(!path.contains(next)) path.add(next);
+        float weight_sum = next.value + link.weight;
+        if(queue.contains(neighbor)){
+          if(weight_sum < neighbor.value){
+            neighbor.value = weight_sum;
+          }
+        }else {
+          neighbor.value = weight_sum;
+          queue.add(neighbor);
+        }
       }
-     }
     }
+    float result = goal.value;
     clear_node_value();
-    return path;
+    return result;
   }
   
   void clear_node_value(){
