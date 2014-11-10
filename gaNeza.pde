@@ -5,7 +5,7 @@ import java.util.Map;
 
 Ganeza network;
 void setup() {
-  size(500, 500);
+  size(800, 800);
   if (frame != null) {
     frame.setResizable(true);
   }
