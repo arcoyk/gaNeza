@@ -56,6 +56,12 @@ void keyPressed() {
     println(goal_node.name);
     float shortest_distance = network.analyzer.shortest_distance(start_node, goal_node);
     println(shortest_distance);
+  }else if (key == 'n') {
+    ArrayList<Node> random_nodes = new ArrayList<Node>();
+    for (int i = 0; i < 10; i++) {
+      random_nodes.add(network.nodes.get((int)random(network.nodes.size())));
+    }
+    network.create_subnetwork(random_nodes, "subnetwork1");
   }
 }
 

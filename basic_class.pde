@@ -50,27 +50,16 @@ class Ganeza {
   
   void create_subnetwork(ArrayList<Node> sub_nodes, String name){
     Ganeza subnetwork = new Ganeza();
-    subnetwork.nodes = sub_nodes;
-    subnetwork.link_rebind();
-    subnetwork.visualizer = new Visualizer(sub_nodes);
+    for (Node sub_node : sub_nodes) {
+      Node node = new Node(sub_node.p, sub_node.v);
+      node.name = sub_node.name;
+      node.value = sub_node.value;
+      subnetwork.nodes.add(node);
+    }
+    subnetwork.visualizer = new Visualizer(subnetwork.nodes);
     subnetwork.name = name;
     subnetwork.visualizer.c = color(0, 0, 255, 100);
     subnetwork_list.add(subnetwork);
-  }
-  
-  void link_rebind(){
-    ArrayList<Node> new_nodes = new ArrayList<Node>();
-    for(Node node : nodes){
-      ArrayList<Link> new_links = new ArrayList<Link>();
-      for(Link link : node.links){
-        if(nodes.contains(link.to_node)){
-          new_nodes.add(link.to_node);
-          new_links.add(link);
-        }
-      }
-      node.links = new_links;
-    }
-    nodes = new_nodes;
   }
   
   void show() {
