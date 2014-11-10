@@ -49,21 +49,36 @@ class Ganeza {
     return null;
   }
   
-  void create_subnetwork(ArrayList<Node> sub_nodes, String name, color c){
+  void create_subnetwork(ArrayList<Node> org_nodes, String name, color c){
     Ganeza subnetwork = new Ganeza();
-    subnetwork.parent_network = network;
-    for (Node sub_node : sub_nodes) {
-      Node node = new Node(sub_node.p, sub_node.v);
-      node.name = sub_node.name;
-      node.value = sub_node.value;
-      subnetwork.nodes.add(node);
+    for (Node org_node : org_nodes) {
+      Node sub_node = new Node(org_node.p, org_node.v);
+      sub_node.name = org_node.name;
+      sub_node.value = org_node.value;
+      subnetwork.nodes.add(sub_node);
     }
+    for (Node org_node : org_nodes) {
+      Node from_node = subnetwork.get_node(org_node.name);
+      if (from_node == null){
+        continue;
+      }
+      for (Link org_link : org_node.links) {
+        Node to_node = subnetwork.get_node(org_link.to_node.name);
+        if (to_node == null) {
+          continue;
+        }
+        Link link = new Link(from_node, to_node);
+        from_node.links.add(link);
+      }
+    }
+    subnetwork.parent_network = network;
     subnetwork.visualizer = new Visualizer(subnetwork.nodes);
     subnetwork.visualizer.method = "";
     subnetwork.name = name;
     subnetwork.visualizer.c = c;
     subnetwork_list.add(subnetwork);
   }
+  
   
   void show() {
     translate(width / 2 - width * view.scale / 2, height / 2 - height * view.scale / 2);

@@ -61,7 +61,8 @@ void keyPressed() {
       Node from_node = (Node)e.getKey();
       Node to_node = (Node)e.getValue();
       Link link = new Link(from_node, to_node);
-      
+      from_node.links.add(link);
+      to_node.links.add(link);
       sub_nodes.put(from_node, 1);
       sub_nodes.put(to_node, 3);
     }
@@ -70,7 +71,7 @@ void keyPressed() {
       Node node = (Node)e.getKey();
       sub_node_array.add(node);
     }
-    network.create_subnetwork(sub_node_array, "subnetwork", color(0, 0, 255, 300));
+    network.create_subnetwork(sub_node_array, "subnetwork", color(0, 0, 255, 255));
     
   }else if (key == 'n') {
   }
