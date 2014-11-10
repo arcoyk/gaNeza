@@ -1,19 +1,24 @@
 //This software is released under the MIT License.
 //Copyright(c) 2014 Yui Arco Kita
 //http://bluedog.herokuapp.com/ganeza
+import java.util.Map;
 
 Ganeza network;
 void setup() {
-  size(1100, 700);
+  size(800, 800);
+  if (frame != null) {
+    frame.setResizable(true);
+  }
   network = new Ganeza("north_america_name.json");
-  network.visualizer.c = color(0, 100, 0, 100);
+  network.visualizer.c = color(0, 0, 0, 50);
   network.visualizer.method = "FORCE_DIRECTED";
+  network.view.scale = 0.5;
   discription();
 }
 
-Link getLink(Node node1, Node node2){
-  for(Link link : node1.links){
-    if(link.to_node == node2){
+Link getLink(Node node1, Node node2) {
+  for (Link link : node1.links) {
+    if (link.to_node == node2) {
       return link;
     }
   }
@@ -51,19 +56,20 @@ void keyPressed() {
     Node goal_node = network.nodes.get((int)random(network.nodes.size()-1));
     println(start_node.name);
     println(goal_node.name);
-    float shortest_distance = network.analyzer.shortest_distance(start_node, goal_node);
-    println(shortest_distance);
+    ArrayList<Node> path = network.analyzer.shortest_distance(start_node, goal_node);
+    network.create_subnetwork(path, "path", color(0, 0, 255, 255));
+  }else if (key == 'n') {
   }
 }
 
-void discription(){
+void discription() {
   println("PRESS\nc->CIRCLE\nf->FORCE_DIRECTED\nS->save image at "+sketchPath(""));
 }
 
-void mouse_select(){
-  for(Node node : network.nodes){
+void mouse_select() {
+  for (Node node : network.nodes) {
     float distance = sqrt(pow(mouseX - node.p.x, 2) + pow(mouseY - node.p.y, 2));
-    if(distance < 10.0){
+    if (distance < 10.0) {
       break;
     }
   }
