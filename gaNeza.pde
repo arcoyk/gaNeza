@@ -1,16 +1,17 @@
 //This software is released under the MIT License.
 //Copyright(c) 2014 Yui Arco Kita
 //http://bluedog.herokuapp.com/ganeza
-
+import java.util.Map;
 Ganeza network;
 void setup() {
-  size(1500, 1500);
+  size(500, 500);
   if (frame != null) {
     frame.setResizable(true);
   }
   network = new Ganeza("north_america_name.json");
   network.visualizer.c = color(0, 0, 0, 50);
   network.visualizer.method = "FORCE_DIRECTED";
+  network.view.scale = 0.5;
   discription();
 }
 
@@ -54,14 +55,22 @@ void keyPressed() {
     Node goal_node = network.nodes.get((int)random(network.nodes.size()-1));
     println(start_node.name);
     println(goal_node.name);
-    float shortest_distance = network.analyzer.shortest_distance(start_node, goal_node);
-    println(shortest_distance);
-  }else if (key == 'n') {
-    ArrayList<Node> random_nodes = new ArrayList<Node>();
-    for (int i = 0; i < 10; i++) {
-      random_nodes.add(network.nodes.get((int)random(network.nodes.size())));
+    HashMap<Node, Node> short_map = network.analyzer.shortest_distance(start_node, goal_node);
+    HashMap<Node, Integer> sub_nodes = new HashMap<Node, Integer>();
+    for (Map.Entry e : short_map.entrySet()){
+      Node from_node = (Node)e.getKey();
+      Node to_node = (Node)e.getValue();
+      sub_nodes.put(from_node, 1);
+      sub_nodes.put(to_node, 3);
     }
-    network.create_subnetwork(random_nodes, "subnetwork1");
+    ArrayList<Node> sub_node_array = new ArrayList<Node>();
+    for (Map.Entry e : sub_nodes.entrySet()){
+      Node node = (Node)e.getKey();
+      sub_node_array.add(node);
+    }
+    network.create_subnetwork(sub_node_array, "subnetwork", color(0, 0, 255, 100));
+    
+  }else if (key == 'n') {
   }
 }
 

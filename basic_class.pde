@@ -48,7 +48,7 @@ class Ganeza {
     return null;
   }
   
-  void create_subnetwork(ArrayList<Node> sub_nodes, String name){
+  void create_subnetwork(ArrayList<Node> sub_nodes, String name, color c){
     Ganeza subnetwork = new Ganeza();
     for (Node sub_node : sub_nodes) {
       Node node = new Node(sub_node.p, sub_node.v);
@@ -58,7 +58,7 @@ class Ganeza {
     }
     subnetwork.visualizer = new Visualizer(subnetwork.nodes);
     subnetwork.name = name;
-    subnetwork.visualizer.c = color(0, 0, 255, 100);
+    subnetwork.visualizer.c = c;
     subnetwork_list.add(subnetwork);
   }
   
