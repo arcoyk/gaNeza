@@ -60,6 +60,8 @@ class Analyzer {
       Node from = (Node)e.getKey();
       Node to = (Node)e.getValue();
       println(from.name + " found " + to.name);
+      Link link = new Link(from, to);
+      from.links.add(link);
       if(to == goal){
         println("GOAL");
       }

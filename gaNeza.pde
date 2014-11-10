@@ -9,7 +9,7 @@ void setup() {
     frame.setResizable(true);
   }
   network = new Ganeza("north_america_name.json");
-  network.visualizer.c = color(0, 0, 0, 50);
+  network.visualizer.c = color(0, 0, 0, 10);
   network.visualizer.method = "FORCE_DIRECTED";
   network.view.scale = 0.5;
   discription();
@@ -60,6 +60,8 @@ void keyPressed() {
     for (Map.Entry e : short_map.entrySet()){
       Node from_node = (Node)e.getKey();
       Node to_node = (Node)e.getValue();
+      Link link = new Link(from_node, to_node);
+      
       sub_nodes.put(from_node, 1);
       sub_nodes.put(to_node, 3);
     }
@@ -68,7 +70,7 @@ void keyPressed() {
       Node node = (Node)e.getKey();
       sub_node_array.add(node);
     }
-    network.create_subnetwork(sub_node_array, "subnetwork", color(0, 0, 255, 100));
+    network.create_subnetwork(sub_node_array, "subnetwork", color(0, 0, 255, 300));
     
   }else if (key == 'n') {
   }
