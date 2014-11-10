@@ -55,24 +55,8 @@ void keyPressed() {
     Node goal_node = network.nodes.get((int)random(network.nodes.size()-1));
     println(start_node.name);
     println(goal_node.name);
-    HashMap<Node, Node> short_map = network.analyzer.shortest_distance(start_node, goal_node);
-    HashMap<Node, Integer> sub_nodes = new HashMap<Node, Integer>();
-    for (Map.Entry e : short_map.entrySet()){
-      Node from_node = (Node)e.getKey();
-      Node to_node = (Node)e.getValue();
-      Link link = new Link(from_node, to_node);
-      from_node.links.add(link);
-      to_node.links.add(link);
-      sub_nodes.put(from_node, 1);
-      sub_nodes.put(to_node, 3);
-    }
-    ArrayList<Node> sub_node_array = new ArrayList<Node>();
-    for (Map.Entry e : sub_nodes.entrySet()){
-      Node node = (Node)e.getKey();
-      sub_node_array.add(node);
-    }
-    network.create_subnetwork(sub_node_array, "subnetwork", color(0, 0, 255, 255));
-    
+    ArrayList<Node> path = network.analyzer.shortest_distance(start_node, goal_node);
+    network.create_subnetwork(path, "path", color(0, 0, 255, 100));
   }else if (key == 'n') {
   }
 }

@@ -24,7 +24,7 @@ class Analyzer {
     return false;
   }
     
-  HashMap<Node, Node> shortest_distance(Node start, Node goal) {
+  ArrayList<Node> shortest_distance(Node start, Node goal) {
     ArrayList<Node> used = new ArrayList<Node>();
     PriorityQueue<Node> queue = new PriorityQueue<Node>();
     HashMap<Node, Node> flow = new HashMap<Node, Node>();
@@ -44,31 +44,24 @@ class Analyzer {
         if (queue.contains(neighbor)) {
           if (weight_sum < neighbor.value) {
             neighbor.value = weight_sum;
-            flow.put(next, neighbor);
+            flow.put(neighbor, next);
           }
         }else {
           neighbor.value = weight_sum;
           queue.add(neighbor);
-          flow.put(next, neighbor);
+          flow.put(neighbor, next);
         }
       }
     }
-    float result = goal.value;
     clear_node_value();
-    //return result;
-    for (Map.Entry e : flow.entrySet()) {
-      Node from = (Node)e.getKey();
-      Node to = (Node)e.getValue();
-      println(from.name + " found " + to.name);
-      Link link = new Link(from, to);
-      from.links.add(link);
-      if(to == goal){
-        println("GOAL");
-      }
+    ArrayList<Node> path = new ArrayList<Node>();
+    Node tracker = goal;
+    while (tracker != start) {
+      path.add(tracker);
+      tracker = flow.get(tracker);
     }
-    println(result);
-    println();
-    return flow;
+    path.add(start);
+    return path;
   }
   
   void clear_node_value() {
