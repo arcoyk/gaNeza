@@ -26,6 +26,7 @@ class Analyzer {
   float shortest_distance(Node start, Node goal) {
     ArrayList<Node> used = new ArrayList<Node>();
     PriorityQueue<Node> queue = new PriorityQueue<Node>();
+    HashMap flow = new HashMap();
     queue.add(start);
     while (!queue.isEmpty()) {
       Node next = queue.poll();
@@ -42,10 +43,12 @@ class Analyzer {
         if (queue.contains(neighbor)) {
           if (weight_sum < neighbor.value) {
             neighbor.value = weight_sum;
+            flow.put(next, neighbor);
           }
         }else {
           neighbor.value = weight_sum;
           queue.add(neighbor);
+          flow.put(next, neighbor);
         }
       }
     }

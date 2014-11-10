@@ -4,7 +4,7 @@
 
 Ganeza network;
 void setup() {
-  size(1100, 700);
+  size(1500, 1500);
   if (frame != null) {
     frame.setResizable(true);
   }
