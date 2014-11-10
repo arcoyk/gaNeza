@@ -1,4 +1,5 @@
 import java.util.PriorityQueue;
+import java.util.Map;
 
 class Analyzer {
   ArrayList<Node> nodes;
@@ -23,9 +24,15 @@ class Analyzer {
     return false;
   }
     
-  float shortest_distance(Node start, Node goal) {
+  ArrayList<Node> shortest_distance(Node start, Node goal) {
+    if (start == goal) {
+      ArrayList<Node> start_alone = new ArrayList<Node>();
+      start_alone.add(start);
+      return start_alone;
+    }
     ArrayList<Node> used = new ArrayList<Node>();
     PriorityQueue<Node> queue = new PriorityQueue<Node>();
+    HashMap<Node, Node> flow = new HashMap<Node, Node>();
     queue.add(start);
     while (!queue.isEmpty()) {
       Node next = queue.poll();
@@ -42,16 +49,27 @@ class Analyzer {
         if (queue.contains(neighbor)) {
           if (weight_sum < neighbor.value) {
             neighbor.value = weight_sum;
+            flow.put(neighbor, next);
           }
         }else {
           neighbor.value = weight_sum;
           queue.add(neighbor);
+          flow.put(neighbor, next);
         }
       }
     }
-    float result = goal.value;
     clear_node_value();
-    return result;
+    if (!flow.containsKey(goal)) {
+      return new ArrayList<Node>();
+    }
+    ArrayList<Node> path = new ArrayList<Node>();
+    Node tracker = goal;
+    while (tracker != start) {
+      path.add(tracker);
+      tracker = flow.get(tracker);
+    }
+    path.add(start);
+    return path;
   }
   
   void clear_node_value() {

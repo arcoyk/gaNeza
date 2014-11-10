@@ -5,6 +5,7 @@ class Ganeza {
   Visualizer visualizer = new Visualizer(nodes);
   Analyzer analyzer = new Analyzer(nodes);
   ArrayList<Ganeza> subnetwork_list = new ArrayList<Ganeza>();
+  Ganeza parent_network = null;
   
   Ganeza() {
   }
@@ -50,27 +51,37 @@ class Ganeza {
   
   void create_subnetwork(ArrayList<Node> sub_nodes, String name, color c) {
     Ganeza subnetwork = new Ganeza();
-    subnetwork.nodes = sub_nodes;
-    subnetwork.link_rebind();
-    subnetwork.visualizer = new Visualizer(sub_nodes);
+    for (Node org_node : org_nodes) {
+      Node sub_node = new Node(org_node.p, org_node.v);
+      sub_node.name = org_node.name;
+      sub_node.value = org_node.value;
+      subnetwork.nodes.add(sub_node);
+    }
+    for (Node org_node : org_nodes) {
+      Node from_node = subnetwork.get_node(org_node.name);
+      if (from_node == null) continue;
+      for (Link org_link : org_node.links) {
+        Node to_node = subnetwork.get_node(org_link.to_node.name);
+        if (to_node == null) continue;
+        Link link = new Link(from_node, to_node);
+        from_node.links.add(link);
+      }
+    }
+    subnetwork.parent_network = network;
+    subnetwork.visualizer = new Visualizer(subnetwork.nodes);
+    subnetwork.visualizer.method = "";
     subnetwork.name = name;
     subnetwork.visualizer.c = c;
     subnetwork_list.add(subnetwork);
   }
   
-  void link_rebind(){
-    ArrayList<Node> new_nodes = new ArrayList<Node>();
-    for(Node node : nodes){
-      ArrayList<Link> new_links = new ArrayList<Link>();
-      for(Link link : node.links){
-        if(nodes.contains(link.to_node)){
-          new_nodes.add(link.to_node);
-          new_links.add(link);
-        }
+  Ganeza get_subnetwork(String subnetwork_name) {
+    for (Ganeza subnetwork : subnetwork_list) {
+      if (subnetwork.name.equals(subnetwork_name)) {
+        return subnetwork;
       }
-      node.links = new_links;
     }
-    nodes = new_nodes;
+    return null;
   }
   
   void show() {
