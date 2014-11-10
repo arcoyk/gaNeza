@@ -59,14 +59,10 @@ class Ganeza {
     }
     for (Node org_node : org_nodes) {
       Node from_node = subnetwork.get_node(org_node.name);
-      if (from_node == null){
-        continue;
-      }
+      if (from_node == null) continue;
       for (Link org_link : org_node.links) {
         Node to_node = subnetwork.get_node(org_link.to_node.name);
-        if (to_node == null) {
-          continue;
-        }
+        if (to_node == null) continue;
         Link link = new Link(from_node, to_node);
         from_node.links.add(link);
       }
@@ -78,7 +74,6 @@ class Ganeza {
     subnetwork.visualizer.c = c;
     subnetwork_list.add(subnetwork);
   }
-  
   
   void show() {
     translate(width / 2 - width * view.scale / 2, height / 2 - height * view.scale / 2);
