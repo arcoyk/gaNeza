@@ -5,6 +5,7 @@ class Ganeza {
   Visualizer visualizer = new Visualizer(nodes);
   Analyzer analyzer = new Analyzer(nodes);
   ArrayList<Ganeza> subnetwork_list = new ArrayList<Ganeza>();
+  Ganeza parent_network = null;
   
   Ganeza() {
   }
@@ -50,6 +51,7 @@ class Ganeza {
   
   void create_subnetwork(ArrayList<Node> sub_nodes, String name, color c){
     Ganeza subnetwork = new Ganeza();
+    subnetwork.parent_network = network;
     for (Node sub_node : sub_nodes) {
       Node node = new Node(sub_node.p, sub_node.v);
       node.name = sub_node.name;
@@ -57,6 +59,7 @@ class Ganeza {
       subnetwork.nodes.add(node);
     }
     subnetwork.visualizer = new Visualizer(subnetwork.nodes);
+    subnetwork.visualizer.method = "";
     subnetwork.name = name;
     subnetwork.visualizer.c = c;
     subnetwork_list.add(subnetwork);
