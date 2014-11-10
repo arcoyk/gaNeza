@@ -25,6 +25,11 @@ class Analyzer {
   }
     
   ArrayList<Node> shortest_distance(Node start, Node goal) {
+    if (start == goal) {
+      ArrayList<Node> start_alone = new ArrayList<Node>();
+      start_alone.add(start);
+      return start_alone;
+    }
     ArrayList<Node> used = new ArrayList<Node>();
     PriorityQueue<Node> queue = new PriorityQueue<Node>();
     HashMap<Node, Node> flow = new HashMap<Node, Node>();
@@ -54,6 +59,9 @@ class Analyzer {
       }
     }
     clear_node_value();
+    if (!flow.containsKey(goal)) {
+      return new ArrayList<Node>();
+    }
     ArrayList<Node> path = new ArrayList<Node>();
     Node tracker = goal;
     while (tracker != start) {

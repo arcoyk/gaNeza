@@ -50,6 +50,10 @@ class Ganeza {
   }
   
   void create_subnetwork(ArrayList<Node> org_nodes, String name, color c){
+    Ganeza existing_subnetwork = get_subnetwork(name);
+    if (existing_subnetwork != null) {
+      subnetwork_list.remove(existing_subnetwork);
+    }
     Ganeza subnetwork = new Ganeza();
     for (Node org_node : org_nodes) {
       Node sub_node = new Node(org_node.p, org_node.v);
@@ -73,6 +77,15 @@ class Ganeza {
     subnetwork.name = name;
     subnetwork.visualizer.c = c;
     subnetwork_list.add(subnetwork);
+  }
+  
+  Ganeza get_subnetwork(String subnetwork_name) {
+    for (Ganeza subnetwork : subnetwork_list) {
+      if (subnetwork.name.equals(subnetwork_name)) {
+        return subnetwork;
+      }
+    }
+    return null;
   }
   
   void show() {

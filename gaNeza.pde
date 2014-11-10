@@ -2,6 +2,7 @@
 //Copyright(c) 2014 Yui Arco Kita
 //http://bluedog.herokuapp.com/ganeza
 import java.util.Map;
+
 Ganeza network;
 void setup() {
   size(500, 500);
@@ -9,7 +10,7 @@ void setup() {
     frame.setResizable(true);
   }
   network = new Ganeza("north_america_name.json");
-  network.visualizer.c = color(0, 0, 0, 10);
+  network.visualizer.c = color(0, 0, 0, 50);
   network.visualizer.method = "FORCE_DIRECTED";
   network.view.scale = 0.5;
   discription();
@@ -56,7 +57,7 @@ void keyPressed() {
     println(start_node.name);
     println(goal_node.name);
     ArrayList<Node> path = network.analyzer.shortest_distance(start_node, goal_node);
-    network.create_subnetwork(path, "path", color(0, 0, 255, 100));
+    network.create_subnetwork(path, "path", color(0, 0, 255, 255));
   }else if (key == 'n') {
   }
 }
