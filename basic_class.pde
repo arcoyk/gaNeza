@@ -49,7 +49,7 @@ class Ganeza {
     return null;
   }
   
-  void create_subnetwork(ArrayList<Node> org_nodes, String name, color c){
+  Ganeza create_subnetwork(ArrayList<Node> org_nodes, String name, color c){
     Ganeza existing_subnetwork = get_subnetwork(name);
     if (existing_subnetwork != null) {
       subnetwork_list.remove(existing_subnetwork);
@@ -77,6 +77,7 @@ class Ganeza {
     subnetwork.name = name;
     subnetwork.visualizer.c = c;
     subnetwork_list.add(subnetwork);
+    return subnetwork;
   }
   
   Ganeza get_subnetwork(String subnetwork_name) {

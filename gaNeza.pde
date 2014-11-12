@@ -9,7 +9,7 @@ void setup() {
   if (frame != null) {
     frame.setResizable(true);
   }
-  network = new Ganeza("north_america_name.json");
+  network = new Ganeza("recipe_ethnic_american.json");
   network.visualizer.c = color(0, 0, 0, 50);
   network.visualizer.method = "FORCE_DIRECTED";
   network.view.scale = 0.5;
@@ -52,12 +52,16 @@ void keyPressed() {
   }else if (key == 'S') {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }else if (key == 's') {
-    Node start_node = network.nodes.get((int)random(network.nodes.size()-1));
-    Node goal_node = network.nodes.get((int)random(network.nodes.size()-1));
-    println(start_node.name);
-    println(goal_node.name);
-    ArrayList<Node> path = network.analyzer.shortest_distance(start_node, goal_node);
-    network.create_subnetwork(path, "path", color(0, 0, 255, 255));
+    for (int m = 0; m < 100; m++) {
+      for (int i = 0; i < 6; i++) {
+        Node node = network.nodes.get((int)random(network.nodes.size()));
+        print(node.name + ", ");
+        sample_ings.add(node);
+      }
+      float average = average_distance(sample_ings);
+      network.create_subnetwork(sample_ings, "sample", color(0, map(average, 0, 5, 0, 255), 255, 255));
+      println(average);
+    }
   }else if (key == 'n') {
   }
 }
@@ -73,4 +77,35 @@ void mouse_select() {
       break;
     }
   }
+}
+
+float average_distance(ArrayList<Node> nodes){
+  ArrayList<Node> path = new ArrayList<Node>();
+  float average_distance = 0;
+  float long_distance = 100000;
+  int cnt = 0;
+  for (int i = 0; i < nodes.size() - 1; i++) {
+    for (int m = i + 1; m < nodes.size(); m++) {
+      Node node1 = nodes.get(i);
+      Node node2 = nodes.get(m);
+      path = network.analyzer.shortest_distance(node1, node2);
+      if (path.size() < 2) {
+        average_distance += long_distance;
+      }
+      float distance_in_path = 0;
+      for (int k = 0; k < path.size() - 1; k++) {
+        Node to_node = path.get(k);
+        Node from_node = path.get(k + 1);
+        for (Link link : from_node.links) {
+          if (link.to_node == to_node) {
+            distance_in_path += link.weight;
+            break;
+          }
+        }
+      }
+      average_distance += distance_in_path;
+      cnt++;
+    }
+  }
+  return average_distance / cnt;
 }
