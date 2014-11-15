@@ -110,6 +110,15 @@ class Ganeza {
   void mouseWheel(MouseEvent event){
     view.mouseWheel(event);
   }
+  
+  void mouse_select() {
+    for (Node node : network.nodes) {
+      float distance = sqrt(pow(mouseX - node.p.x, 2) + pow(mouseY - node.p.y, 2));
+      if (distance < 10.0) {
+        break;
+      }
+    }
+  }
 }
 
 class Link {

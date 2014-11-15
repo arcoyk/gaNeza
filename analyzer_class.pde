@@ -58,7 +58,6 @@ class Analyzer {
         }
       }
     }
-    print(goal.value + ",");
     clear_node_value();
     if (!flow.containsKey(goal)) {
       return new ArrayList<Node>();
@@ -78,6 +77,63 @@ class Analyzer {
       node.value = 0;
     }
   }
+  
+  float standard_deviation(ArrayList<Float> arr) {
+    float result = 0;
+    for (int i = 0; i < arr.size(); i++) {
+      for (int m = i + 1; m < arr.size(); m++) {
+        result += abs(arr.get(i) - arr.get(m));
+      }
+    }
+    return result / arr.size();
+  }
+  
+  float average(ArrayList<Float> arr) {
+    float result = 0;
+    for (int i = 0; i < arr.size(); i++) {
+      result += arr.get(i);
+    }
+    return result / arr.size();
+  }
+  
+  Profile get_profile(ArrayList<Node> nodes){
+    Profile profile = new Profile();
+    ArrayList<Node> path = new ArrayList<Node>();
+    float long_distance = 100000;
+    ArrayList<Float> distance_set = new ArrayList<Float>();
+    for (int i = 0; i < nodes.size() - 1; i++) {
+      for (int m = i + 1; m < nodes.size(); m++) {
+        Node node1 = nodes.get(i);
+        Node node2 = nodes.get(m);
+        path = network.analyzer.shortest_distance(node1, node2);
+        if (path.size() < 2) {
+          distance_set.add(long_distance);
+          continue;
+        }
+        float distance_in_path = 0;
+        for (int k = 0; k < path.size() - 1; k++) {
+          Node to_node = path.get(k);
+          Node from_node = path.get(k + 1);
+          for (Link link : from_node.links) {
+            if (link.to_node == to_node) {
+              distance_in_path += link.weight;
+              break;
+            }
+          }
+        }
+        distance_set.add(distance_in_path);
+      }
+    }
+    profile.average_distance = average(distance_set);
+    profile.standard_deviation_distance = standard_deviation(distance_set);
+    return profile;
+  }
 }
 
+class Profile {
+  Profile() {
+  }
+  float average_distance = 0;
+  float standard_deviation_distance = 0;
+}
 
