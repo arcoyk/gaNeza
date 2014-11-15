@@ -6,23 +6,12 @@ import java.util.Map;
 Ganeza network;
 void setup() {
   size(800, 800);
-  if (frame != null) {
-    frame.setResizable(true);
-  }
+  frame.setResizable(true);
   network = new Ganeza("north_america_name.json");
   network.visualizer.c = color(0, 0, 0, 50);
   network.visualizer.method = "FORCE_DIRECTED";
   network.view.scale = 0.5;
   discription();
-}
-
-Link getLink(Node node1, Node node2) {
-  for (Link link : node1.links) {
-    if (link.to_node == node2) {
-      return link;
-    }
-  }
-  return null;
 }
 
 void draw() {
@@ -57,20 +46,11 @@ void keyPressed() {
     println(start_node.name);
     println(goal_node.name);
     ArrayList<Node> path = network.analyzer.shortest_distance(start_node, goal_node);
-    network.create_subnetwork(path, "path", color(0, 0, 255, 255));
+    network.create_subnetwork(path, "path", color(0, 200, 200, 255));
   }else if (key == 'n') {
   }
 }
 
 void discription() {
   println("PRESS\nc->CIRCLE\nf->FORCE_DIRECTED\nS->save image at "+sketchPath(""));
-}
-
-void mouse_select() {
-  for (Node node : network.nodes) {
-    float distance = sqrt(pow(mouseX - node.p.x, 2) + pow(mouseY - node.p.y, 2));
-    if (distance < 10.0) {
-      break;
-    }
-  }
 }
