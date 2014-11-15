@@ -58,6 +58,7 @@ class Analyzer {
         }
       }
     }
+    print(goal.value + ",");
     clear_node_value();
     if (!flow.containsKey(goal)) {
       return new ArrayList<Node>();

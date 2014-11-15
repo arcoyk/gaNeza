@@ -53,6 +53,7 @@ void keyPressed() {
     save(""+year()+"_"+month()+"_"+day()+"_"+hour()+"_"+minute()+"_"+second()+".png");
   }else if (key == 's') {
     for (int m = 0; m < 100; m++) {
+      ArrayList<Node> sample_ings = new ArrayList<Node>();
       for (int i = 0; i < 6; i++) {
         Node node = network.nodes.get((int)random(network.nodes.size()));
         print(node.name + ", ");
@@ -60,7 +61,8 @@ void keyPressed() {
       }
       float average = average_distance(sample_ings);
       network.create_subnetwork(sample_ings, "sample", color(0, map(average, 0, 5, 0, 255), 255, 255));
-      println(average);
+      println();
+      //println(average);
     }
   }else if (key == 'n') {
   }
