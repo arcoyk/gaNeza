@@ -13,7 +13,6 @@ void setup() {
   network.visualizer.c = color(0, 0, 0, 50);
   network.visualizer.method = "FORCE_DIRECTED";
   network.view.scale = 0.5;
-  discription();
 }
 
 Link getLink(Node node1, Node node2) {
@@ -67,10 +66,6 @@ void keyPressed() {
     println();
   }else if (key == 'n') {
   }
-}
-
-void discription() {
-  println("PRESS\nc->CIRCLE\nf->FORCE_DIRECTED\nS->save image at "+sketchPath(""));
 }
 
 
