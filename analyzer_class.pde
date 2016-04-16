@@ -23,7 +23,7 @@ class Analyzer {
     }
     return false;
   }
-    
+  
   ArrayList<Node> shortest_distance(Node start, Node goal) {
     if (start == goal) {
       ArrayList<Node> start_alone = new ArrayList<Node>();
@@ -136,4 +136,3 @@ class Profile {
   float average_distance = 0;
   float standard_deviation_distance = 0;
 }
-

@@ -15,7 +15,7 @@ class Visualizer {
   Visualizer(ArrayList<Node> in_nodes) {
     nodes = in_nodes;
   }
-  
+      
   void visualize() {
     if (method == "FORCE_DIRECTED") {
       force_directed();
@@ -34,6 +34,11 @@ class Visualizer {
   void show() {
     for (Node node : nodes) {
       for (Link link : node.links) {
+        if (link.vote < 0) {
+         stroke(0, 100, 255, map(link.weight, 0, 800, 0, 255));
+        } else {
+         stroke(255, 100, 0, map(link.weight, 0, 800, 0, 255));
+        }
         line(node.p.x, node.p.y, link.to_node.p.x, link.to_node.p.y);
         strokeWeight(2);
         line(node.p.x, node.p.y, node.p.x + (link.to_node.p.x - node.p.x) / 4, node.p.y + (link.to_node.p.y - node.p.y) / 4);
@@ -41,9 +46,8 @@ class Visualizer {
       }
     }
     for (Node node : nodes) {
-      textSize(20);
-      ellipse(node.p.x, node.p.y, 10, 10);
-      text(node.name, node.p.x, node.p.y - 5);
+      float s = map(node.value, 0, 5, 10, 50);
+      ellipse(node.p.x, node.p.y, s, s);
     }
   }
   
@@ -76,9 +80,15 @@ class Visualizer {
   void force_directed() {
     for (Node node1 : nodes) {
       PVector f = new PVector(0, 0);
-      for (Node node2 : nodes) {
+      for (Node node2 : nodes) {        
         if ( node1 == node2 ) continue;
         f.add(force(node1, node2));
+      }
+      if (node1.box != null) {
+        node1.v.x = 0;
+        node1.v.y = 0;
+        node1.p.x = node1.box.p.x;
+        node1.p.y = node1.box.p.y;
       }
       node1.v.x += f.x/M;
       node1.v.y += f.y/M;
